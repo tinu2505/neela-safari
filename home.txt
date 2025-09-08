@@ -1,0 +1,174 @@
+import Styles from './home.module.css';
+import herosection from '../assets/images/herosection.png';
+import logo from '../assets/images/logo(5).png';
+import card1 from '../assets/images/logo(4).png';
+import card2 from '../assets/images/logo(3).png';
+import maps from '../assets/images/maps.png';
+import needtoknow from '../assets/images/needtoknow.png';
+import packing from '../assets/images/packing.png';
+import rates from '../assets/images/rates.png';
+import weather from '../assets/images/weather.png';
+
+function Home(){
+    return(
+        <div>
+            <section className={Styles.hero}>
+                <img src={herosection} alt="heroImage" />
+            </section>
+            <div className={Styles.intro}>
+                <div className={Styles.preview}>
+                    <h1>Welcome to Neela Safari</h1>
+                    <p>Experience the wild like never before with Neela Safari. 
+                        Our expertly guided tours offer an unforgettable journey through the heart of nature, where you can witness majestic wildlife in their natural habitat.
+                        Whether you're seeking thrilling adventures or serene landscapes, Neela Safari promises an unparalleled safari experience that will leave you with lasting memories. 
+                        Join us and explore the untamed beauty of the wilderness!</p>
+                </div>
+                <div className={Styles.logo}>
+                    <img src={logo} alt="logo" />
+                </div>
+            </div>
+            <div className={Styles.experiences}>
+                <h1>Experiences</h1>
+                <div className={Styles.cards}>
+                    <div className={Styles.card}>
+                        <img src={card1} alt="card1"/>
+                        <div className={Styles.cardContent}>
+                            <h2>8 to 8 Safari</h2>
+                            <p>Experience the thrill of an 8 to 8 safari, 
+                                where you can immerse yourself in the wild from dawn till dusk.</p>
+                            <button>Book Now</button>
+                        </div>
+                    </div>
+                    <div className={Styles.card}>
+                        <img src={card2} alt="card2"/>
+                        <div className={Styles.cardcontent}>
+                            <h2>Morning Safari</h2>
+                            <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai</p>
+                            <button>Book Now</button>
+                        </div>
+                    </div>
+                    <div className={Styles.card}>
+                        <img src={card2} alt="card2"/>
+                        <div className={Styles.cardcontent}>
+                            <h2>Morning Safari</h2>
+                            <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai</p>
+                            <button>Book Now</button>
+                        </div>
+                    </div>
+                    <div className={Styles.card}>
+                        <img src={card2} alt="card2"/>
+                        <div className={Styles.cardcontent}>
+                            <h2>Morning Safari</h2>
+                            <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai</p>
+                            <button>Book Now</button>
+                        </div>
+                    </div>
+                    <div className={Styles.card}>
+                        <img src={card2} alt="card2"/>
+                        <div className={Styles.cardcontent}>
+                            <h2>Morning Safari</h2>
+                            <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai</p>
+                            <button>Book Now</button>
+                        </div>
+                    </div>
+                    <div className={Styles.card}>
+                        <img src={card2} alt="card2"/>
+                        <div className={Styles.cardcontent}>
+                            <h2>Morning Safari</h2>
+                            <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai</p>
+                            <button>Book Now</button>
+                        </div>
+                    </div>
+
+                    <div className={Styles.card}>
+                        <img src={card2} alt="card2"/>
+                        <div className={Styles.cardcontent}>
+                            <h2>Morning Safari</h2>
+                            <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai</p>
+                            <button>Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={Styles.gallary}>
+                <h1>Gallery</h1>
+                <div className={Styles.media}>
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="galleryImage1" />
+                    <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="galleryImage2" />
+                </div>
+            </div>
+            <div className={Styles.quickinfo}>
+                <div className={Styles.infocard}>
+                    <img src={maps} alt="maps" />
+                    <h3>
+                        Location & How to Reach
+                    </h3>
+                    <p>Jawai is located in the Pali district of Rajasthan, India. 
+                        It is approximately 165 kilometers from Udaipur and 190 kilometers from Jodhpur. 
+                        The nearest airport is Udaipur Airport, which is well-connected to major cities in India. 
+                        From the airport, you can hire a taxi or take a bus to reach Jawai.</p>
+                </div>
+                <div className={Styles.infocard}>
+                    <img src={needtoknow} alt="needtoknow" />
+                    <h3>
+                        Need to Know
+                    </h3>
+                    <p>Best time to visit Jawai is from October to March when the weather is pleasant and ideal
+                         for wildlife sightings. The region experiences extreme temperatures during summers, 
+                         making it less favorable for outdoor activities. 
+                         It is advisable to carry light clothing, sunscreen, and 
+                         insect repellent during your visit.</p>
+                </div>
+                <div className={Styles.infocard}>
+                    <img src={packing} alt="packing" />
+                    <h3>
+                        Packing Tips
+                    </h3>
+                    <p>When packing for your Jawai safari, it is essential to bring comfortable 
+                        clothing suitable for outdoor activities. Opt for neutral colors 
+                        like khaki, beige, and olive green to blend in with the surroundings. 
+                        Don't forget to pack a hat, sunglasses, and sturdy footwear for 
+                        walking safaris. Additionally, carry a camera with a zoom lens to 
+                        capture the incredible wildlife moments.</p>
+                </div>
+                <div className={Styles.infocard}>
+                    <img src={rates} alt="rates" />
+                    <h3>
+                        Rates & Packages
+                    </h3>
+                    <p>Jawai offers a range of safari packages to suit different budgets and preferences.
+                            The rates vary depending on the duration of the safari, type of accommodation,
+                            and the number of participants. It is advisable to book your safari in advance
+                            to secure your preferred dates and package. Contact local tour operators or
+                            resorts in Jawai for detailed information on rates and packages.</p>
+                </div>
+                <div className={Styles.infocard}>
+                    <img src={weather} alt="weather" /> 
+                    <h3>
+                        Weather
+                    </h3>
+                    <p>Jawai experiences a semi-arid climate with hot summers and mild winters.
+
+                            Summers (April to June) can be scorching, with temperatures reaching up to 40°C (104°F).
+                            Winters (November to February) are pleasant, with temperatures ranging from 10°C to 25°C (50°F to 77°F).
+                            Monsoon season (July to September) brings moderate rainfall, which enhances the greenery of the region.
+                            It is advisable to check the weather forecast before your trip and pack accordingly.</p>
+                </div>
+                 <div className={Styles.infocard}>
+                    <img src={weather} alt="weather" /> 
+                    <h3>
+                        Weather
+                    </h3>
+                    <p>Jawai experiences a semi-arid climate with hot summers and mild winters.
+
+                            Summers (April to June) can be scorching, with temperatures reaching up to 40°C (104°F).
+                            Winters (November to February) are pleasant, with temperatures ranging from 10°C to 25°C (50°F to 77°F).
+                            Monsoon season (July to September) brings moderate rainfall, which enhances the greenery of the region.
+                            It is advisable to check the weather forecast before your trip and pack accordingly.</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default Home;

@@ -1,0 +1,664 @@
+# Jawai‑style Lodge Website – MERN Starter
+
+A production‑ready starter to build a wildlife lodge/hotel site similar to **jawaileopardlodge.in** using **React (Vite) + Tailwind**, **Node/Express**, and **MongoDB**. It includes pages (Home, Stay, Safaris, Gallery, About, Contact), a booking inquiry flow, SEO‑friendly meta tags, and a clean, modern UI.
+
+---
+
+## 1) Features
+
+* Elegant, responsive UI with sticky navbar, hero, sections, and CTA.
+* Pages: Home, Stay (Rooms), Safaris, Gallery, About, Contact.
+* Booking Inquiry modal (stores to MongoDB).
+* Admin‑ready endpoints to list inquiries.
+* SEO basics: metadata, Open Graph, sitemap stub, robots.txt.
+* Image‑first cards, masonry gallery, testimonials.
+* Config‑driven content so non‑devs can edit text easily.
+
+---
+
+## 2) Project Structure
+
+```
+jawai-lodge/
+├─ client/                     # React + Vite + Tailwind
+│  ├─ index.html
+│  ├─ vite.config.ts
+│  ├─ tailwind.config.ts
+│  ├─ postcss.config.js
+│  ├─ src/
+│  │  ├─ main.tsx
+│  │  ├─ App.tsx
+│  │  ├─ router.tsx
+│  │  ├─ styles/index.css
+│  │  ├─ components/
+│  │  │  ├─ Navbar.tsx
+│  │  │  ├─ Footer.tsx
+│  │  │  ├─ Hero.tsx
+│  │  │  ├─ Section.tsx
+│  │  │  ├─ RoomCard.tsx
+│  │  │  ├─ SafariCard.tsx
+│  │  │  ├─ GalleryGrid.tsx
+│  │  │  ├─ Testimonial.tsx
+│  │  │  └─ BookingModal.tsx
+│  │  ├─ pages/
+│  │  │  ├─ Home.tsx
+│  │  │  ├─ Stay.tsx
+│  │  │  ├─ Safaris.tsx
+│  │  │  ├─ Gallery.tsx
+│  │  │  ├─ About.tsx
+│  │  │  └─ Contact.tsx
+│  │  ├─ lib/api.ts
+│  │  ├─ content/site.ts
+│  │  └─ types.ts
+│  └─ public/
+│     ├─ favicon.svg
+│     ├─ placeholder/* (images)
+│     ├─ robots.txt
+│     └─ sitemap.xml
+└─ server/                    # Node + Express + MongoDB
+   ├─ src/
+   │  ├─ index.ts
+   │  ├─ env.ts
+   │  ├─ db.ts
+   │  ├─ models/
+   │  │  ├─ Inquiry.ts
+   │  │  └─ Room.ts (optional for availability)
+   │  ├─ routes/
+   │  │  ├─ health.ts
+   │  │  ├─ inquiries.ts
+   │  │  └─ upload.ts (optional S3/Cloudinary)
+   │  └─ middleware/
+   │     ├─ validate.ts
+   │     └─ error.ts
+   ├─ package.json
+   └─ tsconfig.json
+```
+
+---
+
+## 3) Quick Start
+
+```bash
+# 1) Create folders
+mkdir -p jawai-lodge && cd jawai-lodge
+
+# 2) Frontend (Vite + React + TS)
+npm create vite@latest client -- --template react-ts
+cd client
+npm i -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+npm i react-router-dom
+cd ..
+
+# 3) Backend (Node + Express + TS)
+mkdir server && cd server
+npm init -y
+npm i express mongoose cors zod helmet morgan dotenv
+npm i -D typescript ts-node-dev @types/express @types/node @types/cors @types/morgan
+npx tsc --init
+cd ..
+
+# 4) Run both (from project root)
+# Open two terminals:
+# A) Frontend
+cd client && npm run dev
+# B) Backend
+cd server && npx ts-node-dev src/index.ts
+```
+
+Create a `.env` in **server**:
+
+```
+PORT=8080
+MONGO_URI=mongodb://localhost:27017/jawai_lodge
+CORS_ORIGIN=http://localhost:5173
+```
+
+---
+
+## 4) Frontend – Key Files
+
+**client/tailwind.config.ts**
+
+```ts
+import type { Config } from 'tailwindcss'
+export default {
+  content: [
+    './index.html',
+    './src/**/*.{ts,tsx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          50: '#faf6f2', 100: '#efe6db', 200: '#e1ccb6', 300: '#cfac88',
+          400: '#b68854', 500: '#a06f3a', 600: '#85582d', 700: '#6a4626',
+          800: '#523821', 900: '#432f1d'
+        }
+      }
+    }
+  },
+  plugins: [],
+} satisfies Config
+```
+
+**client/src/styles/index.css**
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html, body, #root { height: 100%; }
+body { @apply antialiased text-stone-800 bg-stone-50; }
+.container { @apply mx-auto px-4 sm:px-6 lg:px-8; }
+.section { @apply py-16 sm:py-20; }
+.h1 { @apply text-3xl sm:text-5xl font-semibold tracking-tight; }
+.h2 { @apply text-2xl sm:text-3xl font-semibold tracking-tight; }
+.lead { @apply text-lg text-stone-600; }
+.btn { @apply inline-flex items-center gap-2 rounded-2xl px-5 py-3 shadow-sm border border-stone-200 hover:shadow-md transition; }
+.btn-primary { @apply bg-brand-600 text-white border-none hover:bg-brand-700; }
+```
+
+**client/src/main.tsx**
+
+```tsx
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './styles/index.css'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './router'
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+)
+```
+
+**client/src/router.tsx**
+
+```tsx
+import { createBrowserRouter } from 'react-router-dom'
+import App from './App'
+import Home from './pages/Home'
+import Stay from './pages/Stay'
+import Safaris from './pages/Safaris'
+import Gallery from './pages/Gallery'
+import About from './pages/About'
+import Contact from './pages/Contact'
+
+export const router = createBrowserRouter([
+  {
+    path: '/', element: <App />, children: [
+      { index: true, element: <Home /> },
+      { path: 'stay', element: <Stay /> },
+      { path: 'safaris', element: <Safaris /> },
+      { path: 'gallery', element: <Gallery /> },
+      { path: 'about', element: <About /> },
+      { path: 'contact', element: <Contact /> },
+    ]
+  }
+])
+```
+
+**client/src/App.tsx**
+
+```tsx
+import { Outlet, Link, useLocation } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+
+export default function App(){
+  const { pathname } = useLocation()
+  return (
+    <div className="min-h-dvh flex flex-col">
+      <Navbar />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  )
+}
+```
+
+**client/src/components/Navbar.tsx**
+
+```tsx
+import { Link, NavLink } from 'react-router-dom'
+import { useState } from 'react'
+
+export default function Navbar(){
+  const [open, setOpen] = useState(false)
+  const nav = [
+    { to: '/', label: 'Home' },
+    { to: '/stay', label: 'Stay' },
+    { to: '/safaris', label: 'Safaris' },
+    { to: '/gallery', label: 'Gallery' },
+    { to: '/about', label: 'About' },
+    { to: '/contact', label: 'Contact' },
+  ]
+  return (
+    <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-stone-200">
+      <div className="container flex items-center justify-between h-16">
+        <Link to="/" className="font-semibold tracking-tight text-xl">Jawai Lodge</Link>
+        <button className="sm:hidden p-2" onClick={() => setOpen(!open)} aria-label="Toggle menu">☰</button>
+        <nav className={(open? '':'hidden ') + 'sm:flex items-center gap-6'}>
+          {nav.map(n => (
+            <NavLink key={n.to} to={n.to} className={({isActive}) => `text-sm hover:text-brand-700 ${isActive?'text-brand-700 font-medium':''}`} onClick={()=>setOpen(false)}>{n.label}</NavLink>
+          ))}
+          <a href="#book" className="btn btn-primary">Book Now</a>
+        </nav>
+      </div>
+    </header>
+  )
+}
+```
+
+**client/src/components/Hero.tsx**
+
+```tsx
+export default function Hero(){
+  return (
+    <section className="relative h-[70dvh] grid place-items-center bg-[url('/placeholder/hero.jpg')] bg-cover bg-center">
+      <div className="absolute inset-0 bg-black/40"/>
+      <div className="relative container text-white text-center">
+        <h1 className="h1">Wild Jawai. Warm Hospitality.</h1>
+        <p className="lead mt-4 max-w-2xl mx-auto">Experience leopard country—granite hills, flaming sunsets, and a serene stay amid nature.</p>
+        <div className="mt-8 flex justify-center gap-4">
+          <a href="#book" className="btn btn-primary">Enquire Now</a>
+          <a href="/safaris" className="btn bg-white text-stone-900">Explore Safaris</a>
+        </div>
+      </div>
+    </section>
+  )
+}
+```
+
+**client/src/components/Section.tsx**
+
+```tsx
+export default function Section({id, title, subtitle, children}:{
+  id?: string; title: string; subtitle?: string; children: React.ReactNode
+}){
+  return (
+    <section id={id} className="section">
+      <div className="container">
+        <div className="max-w-3xl">
+          <h2 className="h2">{title}</h2>
+          {subtitle && <p className="lead mt-2">{subtitle}</p>}
+        </div>
+        <div className="mt-8">
+          {children}
+        </div>
+      </div>
+    </section>
+  )
+}
+```
+
+**client/src/components/RoomCard.tsx**
+
+```tsx
+import { Room } from '../types'
+export default function RoomCard({room}:{room: Room}){
+  return (
+    <article className="rounded-2xl overflow-hidden border border-stone-200 bg-white shadow-sm">
+      <img src={room.image} alt={room.title} className="w-full h-56 object-cover"/>
+      <div className="p-5">
+        <h3 className="text-xl font-semibold">{room.title}</h3>
+        <p className="text-stone-600 mt-2">{room.description}</p>
+        <div className="mt-4 flex items-center justify-between">
+          <span className="text-stone-700">Sleeps {room.sleeps}</span>
+          <a href="#book" className="btn btn-primary">Enquire</a>
+        </div>
+      </div>
+    </article>
+  )
+}
+```
+
+**client/src/components/GalleryGrid.tsx**
+
+```tsx
+export default function GalleryGrid({images}:{images: string[]}){
+  return (
+    <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]"><!-- Masonry -->
+      {images.map((src,i)=> (
+        <img key={i} src={src} alt="Gallery" className="mb-4 rounded-2xl w-full object-cover"/>
+      ))}
+    </div>
+  )
+}
+```
+
+**client/src/components/BookingModal.tsx**
+
+```tsx
+import { useState } from 'react'
+import { api } from '../lib/api'
+
+export default function BookingModal(){
+  const [open, setOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [msg, setMsg] = useState<string|null>(null)
+  const [form, setForm] = useState({
+    name:'', email:'', phone:'', checkIn:'', checkOut:'', guests:2, message:''
+  })
+  const onSubmit = async (e: React.FormEvent)=>{
+    e.preventDefault(); setLoading(true); setMsg(null)
+    try{
+      await api('/api/inquiries', { method:'POST', body: form })
+      setMsg('Thanks! We\'ll get back shortly.')
+      setForm({name:'',email:'',phone:'',checkIn:'',checkOut:'',guests:2,message:''})
+    }catch(err:any){ setMsg(err.message || 'Something went wrong') }
+    finally{ setLoading(false) }
+  }
+  return (
+    <div id="book" className="container">
+      <button className="btn btn-primary" onClick={()=>setOpen(true)}>Open Booking Form</button>
+      {open && (
+        <div className="fixed inset-0 bg-black/40 grid place-items-center p-4">
+          <form onSubmit={onSubmit} className="w-full max-w-lg rounded-2xl bg-white p-6 space-y-3">
+            <div className="flex justify-between items-center">
+              <h3 className="text-lg font-semibold">Booking Enquiry</h3>
+              <button type="button" onClick={()=>setOpen(false)}>✕</button>
+            </div>
+            <input required placeholder="Name" className="w-full border rounded-xl p-3" value={form.name} onChange={e=>setForm({...form,name:e.target.value})} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <input type="email" required placeholder="Email" className="border rounded-xl p-3" value={form.email} onChange={e=>setForm({...form,email:e.target.value})} />
+              <input required placeholder="Phone" className="border rounded-xl p-3" value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})} />
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <input type="date" required className="border rounded-xl p-3" value={form.checkIn} onChange={e=>setForm({...form,checkIn:e.target.value})} />
+              <input type="date" required className="border rounded-xl p-3" value={form.checkOut} onChange={e=>setForm({...form,checkOut:e.target.value})} />
+              <input type="number" min={1} className="border rounded-xl p-3" value={form.guests} onChange={e=>setForm({...form,guests:parseInt(e.target.value)})} />
+            </div>
+            <textarea placeholder="Message (optional)" className="w-full border rounded-xl p-3" value={form.message} onChange={e=>setForm({...form,message:e.target.value})} />
+            <button disabled={loading} className="btn btn-primary w-full">{loading? 'Sending…':'Send Enquiry'}</button>
+            {msg && <p className="text-sm text-stone-600">{msg}</p>}
+          </form>
+        </div>
+      )}
+    </div>
+  )
+}
+```
+
+**client/src/pages/Home.tsx**
+
+```tsx
+import Hero from '../components/Hero'
+import Section from '../components/Section'
+import RoomCard from '../components/RoomCard'
+import BookingModal from '../components/BookingModal'
+import { rooms, safaris, gallery } from '../content/site'
+
+export default function Home(){
+  return (
+    <>
+      <Hero />
+      <Section title="Stay Amid the Jawai Hills" subtitle="Choose stone cottages or luxury tents—earthy comfort, starry skies.">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {rooms.map((r)=> <RoomCard key={r.id} room={r} />)}
+        </div>
+      </Section>
+      <Section title="Guided Safaris" subtitle="Sunrise and sunset drives to spot leopards, birds, and the changing light.">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {safaris.map(s => (
+            <article key={s.id} className="rounded-2xl overflow-hidden border bg-white">
+              <img src={s.image} className="w-full h-56 object-cover"/>
+              <div className="p-5">
+                <h3 className="text-xl font-semibold">{s.title}</h3>
+                <p className="text-stone-600 mt-2">{s.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </Section>
+      <Section title="Gallery">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {gallery.slice(0,8).map((src,i)=> <img key={i} src={src} className="rounded-2xl h-40 w-full object-cover"/>) }
+        </div>
+      </Section>
+      <div className="section bg-stone-100">
+        <BookingModal />
+      </div>
+    </>
+  )
+}
+```
+
+**client/src/pages/Stay.tsx, Safaris.tsx, Gallery.tsx, About.tsx, Contact.tsx** – use the same Section layout and map from `content/site.ts`.
+
+**client/src/lib/api.ts**
+
+```ts
+export async function api(path: string, { method = 'GET', body }: { method?: string; body?: any } = {}){
+  const res = await fetch(import.meta.env.VITE_API_BASE + path, {
+    method,
+    headers: { 'Content-Type': 'application/json' },
+    body: body ? JSON.stringify(body) : undefined,
+  })
+  if(!res.ok) throw new Error(await res.text())
+  return res.json().catch(()=> ({}))
+}
+```
+
+**client/src/content/site.ts** (demo content)
+
+```ts
+import { Room } from '../types'
+export const rooms: Room[] = [
+  { id:'stone-cottage', title:'Stone AC Cottage', image:'/placeholder/room1.jpg', description:'Cozy stone interiors with modern comforts.', sleeps:2 },
+  { id:'family-cottage', title:'Family AC Cottage', image:'/placeholder/room2.jpg', description:'Spacious stay for small families.', sleeps:4 },
+  { id:'luxury-tent', title:'Luxury AC Tent', image:'/placeholder/room3.jpg', description:'Canvas luxury with private sit‑out.', sleeps:2 },
+]
+export const safaris = [
+  { id:'sunrise', title:'Sunrise Leopard Safari', image:'/placeholder/safari1.jpg', description:'Crisp morning light and active wildlife.' },
+  { id:'sunset', title:'Sunset Safari', image:'/placeholder/safari2.jpg', description:'Golden hour landscapes and sightings.' },
+  { id:'birding', title:'Birding at Jawai Dam', image:'/placeholder/birding.jpg', description:'Migratory flocks and crocodile views.' },
+]
+export const gallery = [
+  '/placeholder/g1.jpg','/placeholder/g2.jpg','/placeholder/g3.jpg','/placeholder/g4.jpg',
+  '/placeholder/g5.jpg','/placeholder/g6.jpg','/placeholder/g7.jpg','/placeholder/g8.jpg',
+]
+```
+
+**client/src/types.ts**
+
+```ts
+export type Room = { id:string; title:string; image:string; description:string; sleeps:number }
+```
+
+Add **client/.env**:
+
+```
+VITE_API_BASE=http://localhost:8080
+```
+
+---
+
+## 5) Backend – Key Files
+
+**server/src/env.ts**
+
+```ts
+import 'dotenv/config'
+export const env = {
+  PORT: process.env.PORT ? Number(process.env.PORT) : 8080,
+  MONGO_URI: process.env.MONGO_URI || 'mongodb://localhost:27017/jawai_lodge',
+  CORS_ORIGIN: process.env.CORS_ORIGIN || 'http://localhost:5173',
+}
+```
+
+**server/src/db.ts**
+
+```ts
+import mongoose from 'mongoose'
+import { env } from './env'
+export async function connectDB(){
+  mongoose.set('strictQuery', true)
+  await mongoose.connect(env.MONGO_URI)
+  console.log('Mongo connected')
+}
+```
+
+**server/src/models/Inquiry.ts**
+
+```ts
+import { Schema, model } from 'mongoose'
+
+const InquirySchema = new Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  phone: { type: String, required: true },
+  checkIn: { type: String, required: true },
+  checkOut: { type: String, required: true },
+  guests: { type: Number, default: 2 },
+  message: { type: String },
+}, { timestamps: true })
+
+export const Inquiry = model('Inquiry', InquirySchema)
+```
+
+**server/src/middleware/error.ts**
+
+```ts
+import { Request, Response, NextFunction } from 'express'
+export function errorHandler(err:any, _req:Request, res:Response, _next:NextFunction){
+  console.error(err)
+  res.status(err.status || 500).send(err.message || 'Server error')
+}
+```
+
+**server/src/routes/health.ts**
+
+```ts
+import { Router } from 'express'
+const r = Router()
+r.get('/', (_req, res) => res.json({ ok: true }))
+export default r
+```
+
+**server/src/routes/inquiries.ts**
+
+```ts
+import { Router } from 'express'
+import { Inquiry } from '../models/Inquiry'
+const r = Router()
+
+r.post('/', async (req, res, next) => {
+  try {
+    const inquiry = await Inquiry.create(req.body)
+    res.status(201).json({ id: inquiry._id })
+  } catch (e) { next(e) }
+})
+
+r.get('/', async (_req, res, next) => {
+  try {
+    const items = await Inquiry.find().sort({ createdAt: -1 }).limit(100)
+    res.json(items)
+  } catch (e) { next(e) }
+})
+
+export default r
+```
+
+**server/src/index.ts**
+
+```ts
+import express from 'express'
+import helmet from 'helmet'
+import morgan from 'morgan'
+import cors from 'cors'
+import { env } from './env'
+import { connectDB } from './db'
+import health from './routes/health'
+import inquiries from './routes/inquiries'
+import { errorHandler } from './middleware/error'
+
+async function main(){
+  await connectDB()
+  const app = express()
+  app.use(helmet())
+  app.use(morgan('dev'))
+  app.use(cors({ origin: env.CORS_ORIGIN }))
+  app.use(express.json({ limit: '1mb' }))
+
+  app.get('/', (_req, res)=> res.send('Jawai Lodge API'))
+  app.use('/api/health', health)
+  app.use('/api/inquiries', inquiries)
+
+  app.use(errorHandler)
+  app.listen(env.PORT, ()=> console.log(`API on http://localhost:${env.PORT}`))
+}
+main().catch(err=>{ console.error(err); process.exit(1) })
+```
+
+---
+
+## 6) Basic SEO Files
+
+**client/public/robots.txt**
+
+```
+User-agent: *
+Allow: /
+Sitemap: /sitemap.xml
+```
+
+**client/public/sitemap.xml** (stub – replace with your live domain later)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>http://localhost:5173/</loc></url>
+  <url><loc>http://localhost:5173/stay</loc></url>
+  <url><loc>http://localhost:5173/safaris</loc></url>
+  <url><loc>http://localhost:5173/gallery</loc></url>
+  <url><loc>http://localhost:5173/about</loc></url>
+  <url><loc>http://localhost:5173/contact</loc></url>
+</urlset>
+```
+
+---
+
+## 7) Deployment Notes
+
+* **Frontend**: Vite build → static hosting (Netlify/Vercel/S3). Set `VITE_API_BASE` to your API URL.
+* **Backend**: Deploy to Render/Fly/Heroku/Dokku. Set `PORT`, `MONGO_URI`, `CORS_ORIGIN` env vars.
+* **Assets**: Replace `/placeholder/*` with your photos. Use Cloudinary/S3 for a CDN.
+
+---
+
+## 8) Next Steps / Enhancements
+
+* Availability calendar & pricing table.
+* Payment links (Razorpay/Stripe) for deposit.
+* Admin dashboard (auth + inquiry management).
+* Rich gallery lightbox, video hero, blog/news.
+* Multi‑language (English/Hindi), schema.org structured data.
+
+---
+
+### How to use this starter
+
+1. Copy the file tree and code into your project folders.
+2. Add real images in `client/public/placeholder/` and update `content/site.ts`.
+3. Run the backend and frontend as shown in **Quick Start**.
+4. Submit a test enquiry from the booking modal and see it in MongoDB.
+
+*Tell me what you want customized (colors, fonts, sections, logo, booking flow), and I’ll tailor the components and content.*
+
+Awesome—I've dropped a full MERN starter kit for a Jawai-style lodge site into the canvas on the right ✅
+
+It includes:
+
+* React (Vite + Tailwind) frontend with pages/components (Home, Stay, Safaris, Gallery, About, Contact, Booking modal)
+* Node/Express + MongoDB backend with an Inquiry model and API routes
+* Quick start commands, .env examples, and deployment notes
+
+If you tell me your preferred color palette, logo, and the exact sections you want (e.g., “Experiences”, “Dining”, “Getting Here”), I’ll tailor the UI and content config for you next.
