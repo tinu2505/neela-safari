@@ -173,7 +173,7 @@ function Home() {
             </div>
 
             <div className={Styles.gallery}>
-                <h2>Gallery</h2>
+                <a href="/Gallery"><h2>Gallery</h2></a>
                 <div className={Styles.media}>
                     <img src={logo} alt="example" />
                     <img src={rates} alt="example" />
