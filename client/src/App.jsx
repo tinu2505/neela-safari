@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Safaris from './pages/Safaris';
 import Gallery from './pages/Gallery';
+import About from './pages/About';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/safaris" element={<Safaris />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </main> 
         <Footer />
