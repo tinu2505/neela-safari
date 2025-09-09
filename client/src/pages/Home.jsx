@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Styles from './home.module.css';
 import herosection from '../assets/images/herosection.png';
 import logo from '../assets/images/logo(5).png';
@@ -35,7 +35,22 @@ const infodata = [
 ];
 
 function Home() {
-    const [openindex, setopoenindex] = useState(null);
+    const [openindex, setopoenindex] = useState(null);      
+    const [weatherdata, setweatherdata] = useState(null);
+
+    useEffect(() => {
+        if (openindex === 3){
+            const apiKey = "797b9efa832c532fdf300f51cfe8d4a8";
+            const city = "Jawai Bandh";
+            fetch(
+                `https://api.openweathermap.org/data/2.5/weather?q=${city},IN&appid=${apiKey}&units=metric`
+            )  
+            .then((res) => res.json())   
+            .then((data) => setweatherdata(data))
+            .catch(() => setweatherdata(null));
+        }
+    },[openindex]);
+
     return(
         <div>
             <section className={Styles.hero}>
@@ -148,7 +163,24 @@ function Home() {
                     <div className={Styles.modaloverlay} onClick={() => setopoenindex(null)}>
                         <div className={Styles.modal} onClick={e => e.stopPropagation()}>
                             <h3><b>{infodata[openindex].title}</b></h3>
-                            <p>{infodata[openindex].content}</p>
+                            {/* For Weather modal, show weather data */}
+                            {openindex === 3 ? (
+                                weatherdata ? (
+                                    <div>
+                                        <p>
+                                            <b>Temperature:</b> {weatherdata.main?.temp}°C<br/>
+                                            <b>Weather:</b> {weatherdata.weather?.[0]?.main} ({weatherdata.weather?.[0]?.description})<br/>
+                                            <b>Humidity:</b> {weatherdata.main?.humidity}%<br/>
+                                            <b>Wind:</b> {weatherdata.wind?.speed} m/s
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <p>Loading Weather...</p>
+                                )
+                            ) : (
+                                <p>{infodata[openindex].content}</p>
+                            )}
+                            {/*<p>{infodata[openindex].content}</p>*/}
                             <button onClick={() => setopoenindex(null)}>Close</button>
                         </div>
                     </div>
