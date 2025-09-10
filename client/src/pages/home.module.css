@@ -250,6 +250,11 @@
   margin: 0 auto;
 }
 
+.weather{
+    display: grid;
+    
+}
+
 @media (max-width: 768px) {
     .infosection{
         display: grid;
