@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { FileUploaderRegular } from '@uploadcare/react-uploader';
+import '@uploadcare/react-uploader/core.css';
 import Styles from './home.module.css';
 import herosection from '../assets/images/herosection.png';
 import logo from '../assets/images/logo(5).png';
@@ -10,6 +12,7 @@ import packing from '../assets/images/packing.png';
 import rates from '../assets/images/rates.png';
 import weather from '../assets/images/weather.png';
 import feedback from '../assets/images/feedback.png';
+import whatsapp from '../assets/images/whatsapp.webp';
 
 const infodata = [
     {
@@ -216,16 +219,50 @@ function Home() {
                     <img src={rates} alt="example" />
                 </div>
             </div>
-
-            <div className={Styles.feedback}>
-                <div className={Styles.feedform}>
-                    <h2>Share Your Feedback</h2>
-                    <input type="text" placeholder="Your Name"/>
-                    <textarea type="text" placeholder="Describe Your Experience With Us" rows={10} />
-                    <button type="submit">Submit</button>
+            
+            <div className={Styles.lastsection}>
+                <div className={Styles.feedback}>
+                    <div className={Styles.feedform}>
+                        <h2>Share Your Feedback</h2>
+                        <input type="text" placeholder="Your Name"/>
+                        <textarea type="text" placeholder="Describe Your Experience With Us" rows={10} />
+                        <button type="submit">Submit</button>
+                    </div>
+                    <div className={Styles.feedimage}>
+                        <img src={feedback} alt="feedback icon" />
+                    </div>
                 </div>
-                <div className={Styles.feedimage}>
-                    <img src={feedback} alt="feedback icon" />
+                <div className={Styles.reachout}>
+                    <h2>Reach Out To Us On:</h2>
+                    <p><b>Address:</b></p>
+                    <br />
+                    <p>dasvdsvdsvdvdvdvdsvsd</p>
+                    <br />
+                    <p><b>Phone:</b></p>
+                    <br />
+                    <p>+919079731479</p>
+                    <br />
+                    <p><b>Message us on Whatsapp:</b></p>
+                    <a href=""><img src={whatsapp} alt="whatsapp" /></a>
+                </div>
+                 <div className={Styles.fileupload}>
+                    <h2>Have You Travelled With Us!</h2>
+                    <br />
+                    <p><b>Share Your Moments With Us</b></p>
+                    <br />
+                    <div>
+                        <FileUploaderRegular
+                            sourceList="local, facebook, gdrive"
+                            classNameUploader="uc-light"
+                            pubkey="1203ae650b6f89e1fbe2"
+                            onCommonUploadSuccess={(e) =>
+                                console.log(
+                                    "Uploaded files URL list",
+                                    e.detail.successEntries.map((entry) => entry.cdnUrl)
+                                )
+                            }
+                        />
+                    </div>
                 </div>
             </div>
         </div>

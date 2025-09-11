@@ -9,6 +9,9 @@ import Home from './pages/Home';
 import Safaris from './pages/Safaris';
 import Gallery from './pages/Gallery';
 import About from './pages/About';
+import Privacypolicy from './pages/Privacypolicy';
+import Termsconditions from './pages/Termsconditions';
+
 
 function App() {
   return (
@@ -21,6 +24,8 @@ function App() {
             <Route path="/safaris" element={<Safaris />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/about" element={<About />} />
+            <Route path="/privacypolicy" element={<Privacypolicy />} />
+            <Route path="/termsconditions" element={<Termsconditions />} />
           </Routes>
         </main> 
         <Footer />

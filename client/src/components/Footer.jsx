@@ -8,8 +8,8 @@ function Footer(){
         <footer className={styles.footer}>
             <div className={styles.links}>
                 <p>Quick Links:</p>
-                <Link to="/">Home</Link>
-                <Link to="/safaris">Safaris</Link>
+                <Link to="/termsconditions">Terms & Conditions</Link>
+                <Link to="/privacypolicy">Privacy Policy</Link>
             </div>
             <div className={styles.socials}>
                 <p>Follow us on:</p>
