@@ -4,7 +4,7 @@ import card1 from '../assets/images/logo(4).png';
 
 const safaridetails = [ 
     {title : "8 To 8 Safari",
-    img : card1,
+    img : "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
     details : `Discover luxury safari experiences at Neela Safari.
 
                 Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.

@@ -17,22 +17,22 @@ import whatsapp from '../assets/images/whatsapp.webp';
 const infodata = [
     {
         title : "Maps & Direction",
-        img: maps,
+        img: "https://q0hao2iwgg.ucarecd.net/a8926cd9-c55e-44b4-aff8-cc7cdec15676/maps.png",
         content: "Here are directions-You can reach Neela Safari via XYZ route. Use Google Maps for navigation."
     },
     {
         title: "Need to Know",
-        img: needtoknow,
+        img: "https://q0hao2iwgg.ucarecd.net/956e86d5-02bc-4f3f-8607-ed267d97137c/needtoknow.png",
         content: "Carry valid photo ID, observe wildlife safety instructions, and check for seasonal guidelines."
     },
     {
         title: "What to Pack",
-        img: packing,
+        img: "https://q0hao2iwgg.ucarecd.net/a587b94f-9df8-4a54-96b1-10c781cdb08d/packing.png",
         content: "Suggested packing: lightweight clothing, sun protection, camera, binoculars, sturdy shoes." 
     },
     {
         title: "Weather",
-        img: weather,
+        img: "https://q0hao2iwgg.ucarecd.net/bee43947-ba18-40a5-bfb0-5b35d2398663/weather.png",
         content: "Typical weather is warm and dry; check forecast before arrival for latest updates."
     }
 ];
@@ -57,7 +57,7 @@ function Home() {
     return(
         <div>
             <section className={Styles.hero}>
-                    <img src={herosection} alt="heroImage" />
+                    <img src="https://q0hao2iwgg.ucarecd.net/2faaa8c3-9ed5-44c0-8147-4faa401ac8e4/herosection.png" alt="heroImage" />
             </section>
 
             <div className={Styles.intro}>
@@ -73,7 +73,7 @@ function Home() {
                 <h1>Experiences</h1>
                 <div className={Styles.cards}>
                     <div className={Styles.card}>
-                        <img src={card1} alt="card1"/>
+                        <img src="https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png" alt="card1"/>
                         <div className={Styles.cardcontent}>
                             <h2>8 to 8 Safari</h2>
                             <p>Experience the thrill of an 8 to 8 safari, 
@@ -83,7 +83,7 @@ function Home() {
                         </div>
                     </div>
                     <div className={Styles.card}>
-                        <img src={card2} alt="card2"/>
+                        <img src="https://q0hao2iwgg.ucarecd.net/c9eece5a-e81f-473d-af19-56b68e03b4e0/logo3.png" alt="card2"/>
                         <div className={Styles.cardcontent}>
                             <h2>Morning Safari</h2>
                             <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai.</p>
@@ -91,7 +91,7 @@ function Home() {
                         </div>
                     </div>
                     <div className={Styles.card}>
-                        <img src={card2} alt="card2"/>
+                        <img src="https://q0hao2iwgg.ucarecd.net/c9eece5a-e81f-473d-af19-56b68e03b4e0/logo3.png" alt="card2"/>
                         <div className={Styles.cardcontent}>
                             <h2>Morning Safari</h2>
                             <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai.</p>
@@ -99,7 +99,7 @@ function Home() {
                         </div>
                     </div>
                     <div className={Styles.card}>
-                        <img src={card2} alt="card2"/>
+                        <img src="https://q0hao2iwgg.ucarecd.net/c9eece5a-e81f-473d-af19-56b68e03b4e0/logo3.png" alt="card2"/>
                         <div className={Styles.cardcontent}>
                             <h2>Morning Safari</h2>
                             <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai.</p>
@@ -107,7 +107,7 @@ function Home() {
                         </div>
                     </div>
                     <div className={Styles.card}>
-                        <img src={card2} alt="card2"/>
+                        <img src="https://q0hao2iwgg.ucarecd.net/c9eece5a-e81f-473d-af19-56b68e03b4e0/logo3.png" alt="card2"/>
                         <div className={Styles.cardcontent}>
                             <h2>Morning Safari</h2>
                             <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai.</p>
@@ -115,7 +115,7 @@ function Home() {
                         </div>
                     </div>
                     <div className={Styles.card}>
-                        <img src={card2} alt="card2"/>
+                        <img src="https://q0hao2iwgg.ucarecd.net/c9eece5a-e81f-473d-af19-56b68e03b4e0/logo3.png" alt="card2"/>
                         <div className={Styles.cardcontent}>
                             <h2>Morning Safari</h2>
                             <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai.</p>
@@ -123,7 +123,7 @@ function Home() {
                         </div>
                     </div>
                     <div className={Styles.card}>
-                        <img src={card2} alt="card2"/>
+                        <img src="https://q0hao2iwgg.ucarecd.net/c9eece5a-e81f-473d-af19-56b68e03b4e0/logo3.png" alt="card2"/>
                         <div className={Styles.cardcontent}>
                             <h2>Morning Safari</h2>
                             <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai.</p>
@@ -131,7 +131,7 @@ function Home() {
                         </div>
                     </div>
                     <div className={Styles.card}>
-                        <img src={card2} alt="card2"/>
+                        <img src="https://q0hao2iwgg.ucarecd.net/c9eece5a-e81f-473d-af19-56b68e03b4e0/logo3.png" alt="card2"/>
                         <div className={Styles.cardcontent}>
                             <h2>Morning Safari</h2>
                             <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai.</p>
@@ -139,7 +139,7 @@ function Home() {
                         </div>
                     </div>
                     <div className={Styles.card}>
-                        <img src={card2} alt="card2"/>
+                        <img src="https://q0hao2iwgg.ucarecd.net/c9eece5a-e81f-473d-af19-56b68e03b4e0/logo3.png" alt="card2"/>
                         <div className={Styles.cardcontent}>
                             <h2>Morning Safari</h2>
                             <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai.</p>
@@ -210,13 +210,13 @@ function Home() {
             <div className={Styles.gallery}>
                 <a href="/Gallery"><h2>Gallery</h2></a>
                 <div className={Styles.media}>
-                    <img src={logo} alt="example" />
-                    <img src={rates} alt="example" />
-                    <img src={rates} alt="example" />
-                    <img src={rates} alt="example" />
-                    <img src={rates} alt="example" />
-                    <img src={rates} alt="example" />
-                    <img src={rates} alt="example" />
+                    <img src="https://q0hao2iwgg.ucarecd.net/50c0dd8f-7be8-41f0-9c04-84740363b423/logo5.png" alt="example" />
+                    <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
+                    <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
+                    <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
+                    <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
+                    <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
+                    <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
                 </div>
             </div>
             
@@ -229,7 +229,7 @@ function Home() {
                         <button type="submit">Submit</button>
                     </div>
                     <div className={Styles.feedimage}>
-                        <img src={feedback} alt="feedback icon" />
+                        <img src="https://q0hao2iwgg.ucarecd.net/f8cf0685-26d3-4029-9224-ef5fb6a89f67/feedback.png" alt="feedback icon" />
                     </div>
                 </div>
                 <div className={Styles.reachout}>
@@ -243,7 +243,7 @@ function Home() {
                     <p>+919079731479</p>
                     <br />
                     <p><b>Message us on Whatsapp:</b></p>
-                    <a href=""><img src={whatsapp} alt="whatsapp" /></a>
+                    <a href=""><img src="https://q0hao2iwgg.ucarecd.net/96097892-3c64-4cff-9df6-034fcdaee538/whatsapp.webp" alt="whatsapp" /></a>
                 </div>
                  <div className={Styles.fileupload}>
                     <h2>Have You Travelled With Us!</h2>

@@ -14,8 +14,8 @@ function Footer(){
             <div className={styles.socials}>
                 <p>Follow us on:</p>
                 <div>
-                    <a href="instagram" target="_blank"><img src={insta} alt="insta" /></a>
-                    <a href="facebook" target="_blank"><img src={fb} alt="fb" /></a>
+                    <a href="instagram" target="_blank"><img src="https://q0hao2iwgg.ucarecd.net/7b9f67d6-dbea-4380-a63c-89cef815340a/insta.png" alt="insta" /></a>
+                    <a href="facebook" target="_blank"><img src="https://q0hao2iwgg.ucarecd.net/8b569485-fe7d-4a78-a236-b70bacbb7a8b/fb.png" alt="fb" /></a>
                 </div>
             </div>
             <p>© {new Date().getFullYear()} NEELA SAFARI. All rights reserved.</p>
