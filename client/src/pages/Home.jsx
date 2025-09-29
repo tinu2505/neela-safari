@@ -37,6 +37,39 @@ const infodata = [
     }
 ];
 
+const galleryimages = [
+    {
+        img: "https://q0hao2iwgg.ucarecd.net/c43fa468-d3e5-4cb5-8273-35d7d9e18a69/sample2.jpg",
+        title: "Image 1"
+    },
+    {
+        img: "https://q0hao2iwgg.ucarecd.net/4717df11-98a7-4f88-8a6f-ce4e09fb85d0/sample1.jpg",
+        title: "Image 2"    
+    },
+    {
+        img: "https://q0hao2iwgg.ucarecd.net/d0d038c1-675c-4b77-9b09-8cbb99e15f3e/sample6.jpg",
+        title: "Image 3"
+    },
+    {
+        img: "https://q0hao2iwgg.ucarecd.net/14aefdc8-9bec-4d5a-a03c-90ec849c1f1b/sample5.jpg",
+        title: "Image 4"
+    },
+    {
+        img: "https://q0hao2iwgg.ucarecd.net/eac6b500-ca66-4f05-9701-b009cbfc8b3d/sample3.jpg",
+        title: "Image 5"
+    },
+    {
+        img: "https://q0hao2iwgg.ucarecd.net/c43fa468-d3e5-4cb5-8273-35d7d9e18a69/sample2.jpg",
+        title: "Image 6"
+    },
+    {
+        img: "https://q0hao2iwgg.ucarecd.net/c43fa468-d3e5-4cb5-8273-35d7d9e18a69/sample2.jpg",
+        title: "Image 6"
+    }
+];
+
+const previewimages = galleryimages.slice(0,8)
+
 function Home() {
     const [openindex, setopoenindex] = useState(null);      
     const [weatherdata, setweatherdata] = useState(null);
@@ -70,7 +103,7 @@ function Home() {
             </div>
 
             <div className={Styles.experiences}>
-                <h1>Experiences</h1>
+                <a href="/safaris"><h1>Experiences</h1></a>
                 <div className={Styles.cards}>
                     <div className={Styles.card}>
                         <img src="https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png" alt="card1"/>
@@ -208,15 +241,21 @@ function Home() {
             </div>
 
             <div className={Styles.gallery}>
-                <a href="/Gallery"><h2>Gallery</h2></a>
-                <div className={Styles.media}>
-                    <img src="https://q0hao2iwgg.ucarecd.net/50c0dd8f-7be8-41f0-9c04-84740363b423/logo5.png" alt="example" />
+                <h2>Gallery</h2>
+                <div className={Styles.galleryrow}>
+                    {/*<img src="https://q0hao2iwgg.ucarecd.net/50c0dd8f-7be8-41f0-9c04-84740363b423/logo5.png" alt="example" />
                     <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
                     <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
                     <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
                     <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
                     <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
                     <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
+                    */}
+
+                    {previewimages.map((src, idx) => (
+                        <img key={idx} src={src.img} alt={`Gallery ${idx + 1}`} />
+                    ))}
+                    <a href="/gallery"><button>View All</button></a>
                 </div>
             </div>
             
