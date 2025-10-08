@@ -37,42 +37,33 @@ const infodata = [
     }
 ];
 
-const galleryimages = [
+const carddetails = [
     {
-        img: "https://q0hao2iwgg.ucarecd.net/c43fa468-d3e5-4cb5-8273-35d7d9e18a69/sample2.jpg",
-        title: "Image 1"
+        img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
+        title: "Morning Safari",
+        content: "Experience the Beauty of Sunrise & Leopards in Hilly terrain of Jawai."
     },
     {
-        img: "https://q0hao2iwgg.ucarecd.net/4717df11-98a7-4f88-8a6f-ce4e09fb85d0/sample1.jpg",
-        title: "Image 2"    
+        img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
+        title: "Evening Safari"  ,
+        content: "Experience the Beauty of Sunset & Leopards in Hilly terrain of Jawai."  
     },
     {
-        img: "https://q0hao2iwgg.ucarecd.net/d0d038c1-675c-4b77-9b09-8cbb99e15f3e/sample6.jpg",
-        title: "Image 3"
+        img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
+        title: "All Day Safari",
+        content: "Experience the Beauty of Sunrise & Sunset & Leopards in Hilly terrain of Jawai."
     },
     {
-        img: "https://q0hao2iwgg.ucarecd.net/14aefdc8-9bec-4d5a-a03c-90ec849c1f1b/sample5.jpg",
-        title: "Image 4"
-    },
-    {
-        img: "https://q0hao2iwgg.ucarecd.net/eac6b500-ca66-4f05-9701-b009cbfc8b3d/sample3.jpg",
-        title: "Image 5"
-    },
-    {
-        img: "https://q0hao2iwgg.ucarecd.net/c43fa468-d3e5-4cb5-8273-35d7d9e18a69/sample2.jpg",
-        title: "Image 6"
-    },
-    {
-        img: "https://q0hao2iwgg.ucarecd.net/c43fa468-d3e5-4cb5-8273-35d7d9e18a69/sample2.jpg",
-        title: "Image 6"
+        img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
+        title: "Night Camping",
+        content: "Experience the Beauty of Night Camping in Hilly terrain of Jawai under Starry Sky."
     }
 ];
-
-const previewimages = galleryimages.slice(0,8)
 
 function Home() {
     const [openindex, setopoenindex] = useState(null);      
     const [weatherdata, setweatherdata] = useState(null);
+    const [modalopen, setmodalopen] = useState(null);
 
     useEffect(() => {
         if (openindex === 3){
@@ -104,7 +95,7 @@ function Home() {
 
             <div className={Styles.experiences}>
                 <a href="/safaris"><h1>Experiences</h1></a>
-                <div className={Styles.cards}>
+                {/*<div className={Styles.cards}>
                     <div className={Styles.card}>
                         <img src="https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png" alt="card1"/>
                         <div className={Styles.cardcontent}>
@@ -139,46 +130,29 @@ function Home() {
                             <button>Book Now</button>
                         </div>
                     </div>
-                    <div className={Styles.card}>
-                        <img src="https://q0hao2iwgg.ucarecd.net/c9eece5a-e81f-473d-af19-56b68e03b4e0/logo3.png" alt="card2"/>
-                        <div className={Styles.cardcontent}>
-                            <h2>Morning Safari</h2>
-                            <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai.</p>
-                            <button>Book Now</button>
+                </div>*/}
+                <div className={Styles.cards}>
+                    {carddetails.map((item) => (
+                        <div className={Styles.card} key={item.title}>
+                            <img src={item.img} alt={item.title}/>
+                            <div className={Styles.cardcontent}>
+                                <h2>{item.title}</h2>
+                                <p>{item.content}</p>
+                                <button onClick={() => setmodalopen(idx)}>Know More</button>
+                            </div>
                         </div>
-                    </div>
-                    <div className={Styles.card}>
-                        <img src="https://q0hao2iwgg.ucarecd.net/c9eece5a-e81f-473d-af19-56b68e03b4e0/logo3.png" alt="card2"/>
-                        <div className={Styles.cardcontent}>
-                            <h2>Morning Safari</h2>
-                            <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai.</p>
-                            <button>Book Now</button>
+                    ))}
+
+                    {modalopen != null && (
+                        <div className={Styles.modaloverlay} onclick ={() => setmodalopen(null)}>
+                            <div className={Styles.modal} onClick={e => e.stopPropagation()}>
+                                <h2>{carddetails[modalopen].title}</h2>
+                                <p>{carddetails[modalopen].content} More details about {carddetails[modalopen].title} will be updated soon. Stay tuned!</p>
+                                <button onClick={() => setmodalopen(null)}>Close</button>
+                            </div>
                         </div>
-                    </div>
-                    <div className={Styles.card}>
-                        <img src="https://q0hao2iwgg.ucarecd.net/c9eece5a-e81f-473d-af19-56b68e03b4e0/logo3.png" alt="card2"/>
-                        <div className={Styles.cardcontent}>
-                            <h2>Morning Safari</h2>
-                            <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai.</p>
-                            <button>Book Now</button>
-                        </div>
-                    </div>
-                    <div className={Styles.card}>
-                        <img src="https://q0hao2iwgg.ucarecd.net/c9eece5a-e81f-473d-af19-56b68e03b4e0/logo3.png" alt="card2"/>
-                        <div className={Styles.cardcontent}>
-                            <h2>Morning Safari</h2>
-                            <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai.</p>
-                            <button>Book Now</button>
-                        </div>
-                    </div>
-                    <div className={Styles.card}>
-                        <img src="https://q0hao2iwgg.ucarecd.net/c9eece5a-e81f-473d-af19-56b68e03b4e0/logo3.png" alt="card2"/>
-                        <div className={Styles.cardcontent}>
-                            <h2>Morning Safari</h2>
-                            <p>Experience the Beauty of Sunrise in Hilly terrain of Jawai.</p>
-                            <button>Book Now</button>
-                        </div>
-                    </div>
+                    )}
+
                 </div>
             </div>
 
@@ -196,8 +170,8 @@ function Home() {
                
                 {/* Popup modal */}
                 {openindex != null && (
-                    <div className={Styles.modaloverlay} onClick={() => setopoenindex(null)}>
-                        <div className={Styles.modal} onClick={e => e.stopPropagation()}>
+                    <div className={Styles.indexoverlay} onClick={() => setopoenindex(null)}>
+                        <div className={Styles.index} onClick={e => e.stopPropagation()}>
                             <h3><b>{infodata[openindex].title}</b></h3>
                             {/* For Weather modal, show weather data */}
                             {openindex === 3 ? (
@@ -243,19 +217,9 @@ function Home() {
             <div className={Styles.gallery}>
                 <h2>Gallery</h2>
                 <div className={Styles.galleryrow}>
-                    {/*<img src="https://q0hao2iwgg.ucarecd.net/50c0dd8f-7be8-41f0-9c04-84740363b423/logo5.png" alt="example" />
-                    <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
-                    <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
-                    <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
-                    <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
-                    <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
-                    <img src="https://q0hao2iwgg.ucarecd.net/f7406a89-6273-489d-9e0d-5eb6ed1be0e7/rates.png" alt="example" />
-                    */}
-
-                    {previewimages.map((src, idx) => (
-                        <img key={idx} src={src.img} alt={`Gallery ${idx + 1}`} />
-                    ))}
-                    <a href="/gallery"><button>View All</button></a>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/KGT0I42cm2o?si=yWzvce4eGh-Qt0mm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <img src="https://q0hao2iwgg.ucarecd.net/c43fa468-d3e5-4cb5-8273-35d7d9e18a69/sample2.jpg" alt="" />
+                    <a href="/gallery"><p>&gt;</p></a>
                 </div>
             </div>
             

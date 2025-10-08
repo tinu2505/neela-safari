@@ -50,7 +50,7 @@
 .cards{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: stretch;
     gap: 20px;
     padding-top: 12px;
@@ -194,7 +194,7 @@
 
 /* modal styles*/
 
-.modaloverlay{  
+.indexoverlay{  
     position: fixed;
     inset: 0;
     background: rgba(44, 22, 8, 0.45);
@@ -204,7 +204,7 @@
     z-index: 9999;
 }
 
-.modal {
+.index {
   background: #fffefe;
   border-radius: 16px;
   padding: 1.5rem 2rem;
@@ -221,20 +221,20 @@
   to   { transform: scale(1); opacity: 1; }
 }
 
-.modal h3 {
+.index h3 {
   margin-top: 0;
   font-size: 1.1rem;
   text-align: center;
   margin-bottom: 10px;
 }
 
-.modal p {
+.index p {
   margin-bottom: 1.5em;
   font-size: 1rem;
   text-align: center;
 }
 
-.modal button {
+.index button {
   background: #ba8b48;
   color: #fff;
   border: none;
@@ -281,16 +281,20 @@
 
 .galleryrow{
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     margin: 20px;
-    margin-left: 40px;
+    margin-left: 0px;
+    margin-bottom: 50px;
+    padding: 20px;
     align-items: center;
     gap: 18px;
     overflow-x: auto;
 }
 
 .galleryrow img{
-    width: 160px;
-    height: 110px;
+    width: auto;
+    height: 315px;
     object-fit: cover;
     border-radius: 12px;
     box-shadow: 0 3px 12px rgba(44,22,8,0.10);
@@ -298,35 +302,79 @@
     cursor: pointer;
 }
 
+.gallery video{
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(44,22,8,0.10);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.gallery p{
+    border: 2px solid #ba8b48;
+    height: 315px;
+    width: 50px;
+    padding-top: 125px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+    border-radius: 12px;
+}
+
+.gallery video:hover {
+  transform: scale(1.04) translateY(-4px);
+  box-shadow: 0 8px 28px rgba(186,139,72,0.20);
+}
+
+
 .galleryrow img:hover {
   transform: scale(1.04) translateY(-4px);
   box-shadow: 0 8px 28px rgba(186,139,72,0.20);
 }
 
-.galleryrow button{
-    padding: 0 26px;
-    height: 44px;
-    border-radius: 9px;
-    border: none;
-    background: #ba8b48;
-    color: #fff;
-    font-weight: 600;
-    font-size: 16px;
-    margin-left: 8px;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(44, 22, 8, 0.10);
+.galleryrow p:hover {
+  transform: scale(1.04) translateY(-4px);
+  box-shadow: 0 8px 28px rgba(186,139,72,0.20);
 }
+
+.galleryrow::-webkit-scrollbar {
+  display: none;
+} /* Chrome, Safari, Opera */
 
 @media (max-width: 600px) {
   .gallery {
-    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    padding: 12px 0;
+    margin: 10px;
+  }
+
+  .gallery h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .galleryrow{
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 0;
+  }
+
+  .gallery video {
+    height: 220px;
+    border-radius: 8px;
   }
 
   .gallery img {
     height: 220px;
     border-radius: 8px;
+  }
+
+  .gallery p {
+    border-radius: 8px;
+    text-align: center;
+    height: 60px;
+    width: 90vw;
+    padding: 5px;
   }
 }
 
