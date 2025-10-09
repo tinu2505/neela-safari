@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FileUploaderRegular } from '@uploadcare/react-uploader';
 import '@uploadcare/react-uploader/core.css';
 import Styles from './home.module.css';
+{/*import video from '../assets/images/safari-video.mp4 
 import herosection from '../assets/images/herosection.png';
 import logo from '../assets/images/logo(5).png';
 import card1 from '../assets/images/logo(4).png';
@@ -12,7 +14,7 @@ import packing from '../assets/images/packing.png';
 import rates from '../assets/images/rates.png';
 import weather from '../assets/images/weather.png';
 import feedback from '../assets/images/feedback.png';
-import whatsapp from '../assets/images/whatsapp.webp';
+import whatsapp from '../assets/images/whatsapp.webp';*/}
 
 const infodata = [
     {
@@ -61,6 +63,7 @@ const carddetails = [
 ];
 
 function Home() {
+    const navigate = useNavigate();
     const [openindex, setopoenindex] = useState(null);      
     const [weatherdata, setweatherdata] = useState(null);
     const [modalopen, setmodalopen] = useState(null);
@@ -132,7 +135,7 @@ function Home() {
                     </div>
                 </div>*/}
                 <div className={Styles.cards}>
-                    {carddetails.map((item) => (
+                    {carddetails.map((item, idx) => (
                         <div className={Styles.card} key={item.title}>
                             <img src={item.img} alt={item.title}/>
                             <div className={Styles.cardcontent}>
@@ -146,9 +149,12 @@ function Home() {
                     {modalopen != null && (
                         <div className={Styles.modaloverlay} onclick ={() => setmodalopen(null)}>
                             <div className={Styles.modal} onClick={e => e.stopPropagation()}>
-                                <h2>{carddetails[modalopen].title}</h2>
+                                <h3>{carddetails[modalopen].title}</h3>
                                 <p>{carddetails[modalopen].content} More details about {carddetails[modalopen].title} will be updated soon. Stay tuned!</p>
-                                <button onClick={() => setmodalopen(null)}>Close</button>
+                                <div className={Styles.modalbuttons}>
+                                    <button onClick={() => navigate("/booknow")}>Book Now</button>
+                                    <button onClick={() => setmodalopen(null)}>Close</button>
+                                </div>
                             </div>
                         </div>
                     )}
@@ -217,6 +223,10 @@ function Home() {
             <div className={Styles.gallery}>
                 <h2>Gallery</h2>
                 <div className={Styles.galleryrow}>
+                    {/*<video width="560" height="315" controls>
+                        <source src={video} type="video/mp4"/>
+                        Your browser does not support the video tag.
+                    </video>*/}
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/KGT0I42cm2o?si=yWzvce4eGh-Qt0mm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     <img src="https://q0hao2iwgg.ucarecd.net/c43fa468-d3e5-4cb5-8273-35d7d9e18a69/sample2.jpg" alt="" />
                     <a href="/gallery"><p>&gt;</p></a>
@@ -231,11 +241,21 @@ function Home() {
                         <textarea type="text" placeholder="Describe Your Experience With Us" rows={10} />
                         <button type="submit">Submit</button>
                     </div>
-                    <div className={Styles.feedimage}>
-                        <img src="https://q0hao2iwgg.ucarecd.net/f8cf0685-26d3-4029-9224-ef5fb6a89f67/feedback.png" alt="feedback icon" />
+                    <div className={Styles.reachout}>
+                        <h2>Reach Out To Us On:</h2>
+                        <p><b>Address:</b></p>
+                        <br />
+                        <p>dasvdsvdsvdvdvdvdsvsd</p>
+                        <br />
+                        <p><b>Phone:</b></p>
+                        <br />
+                        <p>+919079731479</p>
+                        <br />
+                        <p><b>Message us on Whatsapp:</b></p>
+                        <a href=""><img src="https://q0hao2iwgg.ucarecd.net/96097892-3c64-4cff-9df6-034fcdaee538/whatsapp.webp" alt="whatsapp" /></a>
                     </div>
                 </div>
-                <div className={Styles.reachout}>
+                {/*<div className={Styles.reachout}>
                     <h2>Reach Out To Us On:</h2>
                     <p><b>Address:</b></p>
                     <br />
@@ -247,7 +267,7 @@ function Home() {
                     <br />
                     <p><b>Message us on Whatsapp:</b></p>
                     <a href=""><img src="https://q0hao2iwgg.ucarecd.net/96097892-3c64-4cff-9df6-034fcdaee538/whatsapp.webp" alt="whatsapp" /></a>
-                </div>
+                </div>*/}
                  <div className={Styles.fileupload}>
                     <h2>Have You Travelled With Us!</h2>
                     <br />

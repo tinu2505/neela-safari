@@ -1,5 +1,5 @@
 import Styles from './about.module.css';
-import aboutsection from '../assets/images/aboutsection.png';
+{/*import aboutsection from '../assets/images/aboutsection.png';*/}
 
 function About(){
     return(

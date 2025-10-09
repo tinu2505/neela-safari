@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Styles from './safaris.module.css'
-import card1 from '../assets/images/logo(4).png';
+{/*import card1 from '../assets/images/logo(4).png';*/}
 
 const safaridetails = [ 
     {title : "8 To 8 Safari",

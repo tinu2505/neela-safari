@@ -118,13 +118,87 @@
     background-color: #ba8b40e0;
 }
 
+.modaloverlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(44, 22, 8, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal{
+  background: #fffefe;
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  min-width: 260px;
+  max-width: 70vw;
+  box-shadow: 0 12px 40px rgba(44,22,8,0.25);
+  animation: popin 0.24s;
+  position: relative;
+  text-align: left;
+}
+
+.modal h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.modal p {
+  margin-bottom: 1.5em;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.modalbuttons{
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 1rem;
+    padding: 8px 24px;
+    margin: 0 auto;
+}
+
+.modal button {
+    background: #ba8b48;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 1rem;
+    padding: 8px 24px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.modal button:hover {
+  background: #ba8b40e0;
+}
+
+@keyframes popin {
+  from { transform: scale(0.94); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
 @media (max-width: 768px){
     .experiences h1{
         font-size: 32px;
     }
 
     .cards{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
         gap: 15px;
+        padding-left: 0;
+        margin-left: 8px;
+        overflow-x: auto;
     }
 
     .card{
@@ -149,6 +223,11 @@
 
     .card button{
         padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    .modalbuttons{
+        flex-direction: column;
+        gap: 12px;
         font-size: 0.9rem;
     }
 }
@@ -209,7 +288,7 @@
   border-radius: 16px;
   padding: 1.5rem 2rem;
   min-width: 260px;
-  max-width: 94vw;
+  max-width: 70vw;
   box-shadow: 0 12px 40px rgba(44,22,8,0.25);
   animation: popin 0.24s;
   position: relative;
@@ -223,14 +302,14 @@
 
 .index h3 {
   margin-top: 0;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   text-align: center;
   margin-bottom: 10px;
 }
 
 .index p {
   margin-bottom: 1.5em;
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-align: center;
 }
 
@@ -494,13 +573,13 @@
 }
 
 .reachout{
-    padding: 20px;
-    height: 530px;
+    padding: 15px;
+    
     justify-content: center;
     align-items: stretch;
     border-radius: 14px;
-    max-width: 880px;
-    box-shadow: 0 4px 24px rgba(44,22,8,0.09);
+    
+    
 }
 
 .reachout h2{

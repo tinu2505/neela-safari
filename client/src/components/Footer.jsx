@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./footer.module.css";
-import insta from "../assets/images/insta.png";
-import fb from "../assets/images/fb.png";
+{/*import insta from "../assets/images/insta.png";
+import fb from "../assets/images/fb.png";*/}
 
 function Footer(){
     return(
