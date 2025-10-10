@@ -1,0 +1,77 @@
+.booknow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.booknow h1{
+    font-size: 2.5rem;
+    margin: 1rem;
+}
+
+.booknow h3{
+    font-size: 1.2rem;
+}
+
+.options{
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+}
+
+.call{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin: 2rem;
+}
+
+.call p{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.call img{
+    width: 290px;
+}
+
+.call:hover{
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin: 2rem;
+}
+
+.whatsapp p{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.whatsapp img{
+    width: 290px;
+}
+
+.whatsapp:hover{
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

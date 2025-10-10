@@ -10,11 +10,8 @@ const safaridetails = [
     details : `Discover luxury safari experiences at Neela Safari.
 
                 Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-
                 Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-
                 Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-
                 Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
             `
     },
@@ -24,11 +21,8 @@ const safaridetails = [
     details : `Discover luxury safari experiences at Neela Safari.  
                 
                 Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-
                 Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.      
-                
                 Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-
                 Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
             `
     },
@@ -79,7 +73,12 @@ function Safaris(){
                     <div className={Styles.modaloverlay} onClick={() => setmodalopen(null)}>
                         <div className={Styles.modal} onClick={e => e.stopPropagation()}>
                             <h3>{safaridetails[modalopen].title}</h3>
-                            <p>{safaridetails[modalopen].details}</p>
+                            <ul>
+                                {safaridetails[modalopen].details
+                                .split('\n').filter(line => line.trim() !== "")
+                                .map((line, idx) => (<li key={idx}>{line.trim()}</li> 
+                                ))}
+                            </ul>
                             <div className={Styles.modalbuttons}>
                                 <button onClick={() => {navigate('/booknow')}}>Book Now</button>
                                 <button onClick={() => setmodalopen(null)}>Close</button>

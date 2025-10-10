@@ -43,22 +43,50 @@ const carddetails = [
     {
         img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
         title: "Morning Safari",
-        content: "Experience the Beauty of Sunrise & Leopards in Hilly terrain of Jawai."
+        content: "Experience the Beauty of Sunrise & Leopards in Hilly terrain of Jawai.",
+        details : `Discover luxury safari experiences at Neela Safari.
+        
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.          
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
+            `
     },
     {
         img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
         title: "Evening Safari"  ,
-        content: "Experience the Beauty of Sunset & Leopards in Hilly terrain of Jawai."  
+        content: "Experience the Beauty of Sunset & Leopards in Hilly terrain of Jawai.",
+        details : `Discover luxury safari experiences at Neela Safari.
+        
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.          
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
+            `  
     },
     {
         img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
         title: "All Day Safari",
-        content: "Experience the Beauty of Sunrise & Sunset & Leopards in Hilly terrain of Jawai."
+        content: "Experience the Beauty of Sunrise & Sunset & Leopards in Hilly terrain of Jawai.",
+        details : `Discover luxury safari experiences at Neela Safari.
+        
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.          
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
+            `
     },
     {
         img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
         title: "Night Camping",
-        content: "Experience the Beauty of Night Camping in Hilly terrain of Jawai under Starry Sky."
+        content: "Experience the Beauty of Night Camping in Hilly terrain of Jawai under Starry Sky.",
+        details : `Discover luxury safari experiences at Neela Safari.
+        
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.          
+                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
+            `
     }
 ];
 
@@ -150,7 +178,12 @@ function Home() {
                         <div className={Styles.modaloverlay} onclick ={() => setmodalopen(null)}>
                             <div className={Styles.modal} onClick={e => e.stopPropagation()}>
                                 <h3>{carddetails[modalopen].title}</h3>
-                                <p>{carddetails[modalopen].content} More details about {carddetails[modalopen].title} will be updated soon. Stay tuned!</p>
+                                <ul>
+                                    {carddetails[modalopen].details
+                                    .split('\n').filter(line => line.trim() !== "")
+                                    .map((line, idx) => (<li key={idx}>{line.trim()}</li> 
+                                    ))}
+                                </ul>
                                 <div className={Styles.modalbuttons}>
                                     <button onClick={() => navigate("/booknow")}>Book Now</button>
                                     <button onClick={() => setmodalopen(null)}>Close</button>
@@ -244,15 +277,13 @@ function Home() {
                     <div className={Styles.reachout}>
                         <h2>Reach Out To Us On:</h2>
                         <p><b>Address:</b></p>
-                        <br />
                         <p>dasvdsvdsvdvdvdvdsvsd</p>
                         <br />
                         <p><b>Phone:</b></p>
-                        <br />
                         <p>+919079731479</p>
                         <br />
                         <p><b>Message us on Whatsapp:</b></p>
-                        <a href=""><img src="https://q0hao2iwgg.ucarecd.net/96097892-3c64-4cff-9df6-034fcdaee538/whatsapp.webp" alt="whatsapp" /></a>
+                        <a href="https://wa.me/+919079731479" target="_blank"><img src="https://q0hao2iwgg.ucarecd.net/96097892-3c64-4cff-9df6-034fcdaee538/whatsapp.webp" alt="whatsapp" /></a>
                     </div>
                 </div>
                 {/*<div className={Styles.reachout}>

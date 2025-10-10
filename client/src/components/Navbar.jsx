@@ -17,7 +17,7 @@ function Navbar() {
         <Link to="/safaris">Safaris</Link>
         <Link to="/gallery">Gallery</Link>
         <Link to="/about">About</Link>
-        <Link to="/book">Book Now</Link>
+        <Link to="/booknow">Book Now</Link>
       </div>
     </nav>
   );
