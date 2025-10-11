@@ -95,6 +95,31 @@ function Home() {
     const [openindex, setopoenindex] = useState(null);      
     const [weatherdata, setweatherdata] = useState(null);
     const [modalopen, setmodalopen] = useState(null);
+    const [name, setName] = useState("");
+    const [message, setMessage] = useState("");
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await fetch("http://localhost:8080/api/form", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, message }),
+            });
+            const data = await res.json();
+            if (res.ok) {
+            alert("Form submitted successfully");
+            setName(""); 
+            setMessage("");
+            } else {
+            alert("Failed to submit form");
+            }
+        } 
+        catch (err) {
+            alert("Error submitting form");
+        }
+    };
+
 
     useEffect(() => {
         if (openindex === 3){
@@ -270,9 +295,11 @@ function Home() {
                 <div className={Styles.feedback}>
                     <div className={Styles.feedform}>
                         <h2>Share Your Feedback</h2>
-                        <input type="text" placeholder="Your Name"/>
-                        <textarea type="text" placeholder="Describe Your Experience With Us" rows={10} />
-                        <button type="submit">Submit</button>
+                        <form onSubmit={handleSubmit}>
+                            <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Your Name" required/>
+                            <textarea type="text" id="message" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Describe Your Experience With Us" rows={10} required/>
+                            <button type="submit">Submit</button>
+                        </form>
                     </div>
                     <div className={Styles.reachout}>
                         <h2>Reach Out To Us On:</h2>

@@ -75,3 +75,22 @@
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+@media (max-width: 768px){
+    .booknow h1{
+        font-size: 2rem;
+    }
+
+    .options{
+        gap: 0px;
+        flex-direction: column;
+    }
+    
+    .call p{
+        font-size: 20px;
+    }
+
+    .whatsapp p{
+        font-size: 20px;
+    }
+}

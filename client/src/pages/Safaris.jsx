@@ -36,7 +36,7 @@ const safaridetails = [
                 Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
             `
     },
-    {title : "Night Safari",
+    {title : "Night Camping",
     img : "https://q0hao2iwgg.ucarecd.net/96097892-3c64-4cff-9df6-034fcdaee538/whatsapp.webp",
     content: "Experience the thrill of a Night Safari in the wild of Jawai.",
     details : `Discover luxury safari experiences at Neela Safari.

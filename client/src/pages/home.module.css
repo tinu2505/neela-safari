@@ -481,18 +481,18 @@
     max-width: 880px;
     box-shadow: 0 4px 24px rgba(44,22,8,0.09);
     overflow: hidden;
-    gap: 0;
+    gap: 10px;
 }
 
 .feedform{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     padding: 22px 28px;
     
     font-size: 1.1rem;
     width: 55%;
-    gap: 18px;
+    gap: 20px;
    
 }
 
@@ -505,6 +505,7 @@
 .feedform input,
 .feedform textarea {
   border: 1px solid #fad5a5;
+  width: 100%;
   border-radius: 7px;
   padding: 12px;
   font-size: 1.06rem;
@@ -513,6 +514,7 @@
   outline: none;
   resize: none;
   transition: border-color 0.2s;
+  margin-bottom: 10px;
 }
 
 .feedform input:focus,
@@ -560,7 +562,9 @@
     align-items: center;
     box-shadow: 0 2px 6px rgba(44,22,8,0.11);
   }
-  .feedform, .feedimage {
+  .feedform{
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     padding: 18px 10px;
   }

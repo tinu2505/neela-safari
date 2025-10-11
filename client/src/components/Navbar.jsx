@@ -13,11 +13,11 @@ function Navbar() {
         &#9776;
       </button>
       <div className={`${styles.links} ${open ? styles.open : ""}`}>
-        <Link to="/">Home</Link>
-        <Link to="/safaris">Safaris</Link>
-        <Link to="/gallery">Gallery</Link>
-        <Link to="/about">About</Link>
-        <Link to="/booknow">Book Now</Link>
+        <Link to="/" onClick={() => setOpen(false)}>Home</Link>
+        <Link to="/safaris" onClick={() => setOpen(false)}>Safaris</Link>
+        <Link to="/gallery" onClick={() => setOpen(false)}>Gallery</Link>
+        <Link to="/about" onClick={() => setOpen(false)}>About</Link>
+        <Link to="/booknow" onClick={() => setOpen(false)}>Book Now</Link>
       </div>
     </nav>
   );
