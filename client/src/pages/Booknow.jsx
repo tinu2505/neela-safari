@@ -1,4 +1,4 @@
-import Styles from './Booknow.module.css';
+import Styles from './booknow.module.css';
 
 function Booknow() {
     return(
