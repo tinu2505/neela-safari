@@ -101,7 +101,7 @@ function Home() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch(`https://neela-safari-server.onrender.com/api/form`, {
+            const res = await fetch("http://localhost:8080/api/form", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name, message }),

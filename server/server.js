@@ -6,26 +6,11 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 
 const app = express();
-app.use(cors({origin: function(origin, callback) 
-  {
-    if(!origin) return callback(null, true);
-    if(allowedOrigins.indexOf(origin) !== -1){
-      return callback(null, true);
-    }else{
-      return callback(new Error('Not allowed by CORS'));
-    }
-  },
-credentials: true
-}));
+app.use(cors());
 app.use(json());
 
-const allowedOrigins = [
-  'https://neela-safari.vercel.app',
-  'http://localhost:5173'
-];
-
 connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(()=>console.log("MongoDB co}nnected"))
+  .then(()=>console.log("MongoDB connected"))
   .catch(err=>console.error(err));
 
 // Example route (API health check)
