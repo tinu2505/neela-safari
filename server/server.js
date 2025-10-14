@@ -6,11 +6,11 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 
 const app = express();
-app.use(cors());
+app.use(cors({origin: '*', credentials: true}));
 app.use(json());
 
 connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(()=>console.log("MongoDB connected"))
+  .then(()=>console.log("MongoDB co}nnected"))
   .catch(err=>console.error(err));
 
 // Example route (API health check)
