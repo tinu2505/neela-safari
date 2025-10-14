@@ -6,7 +6,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 
 const app = express();
-app.use(cors({origin: '*', credentials: true}));
+app.use(cors({origin: 'https://neela-safari.vercel.app', credentials: true}));
 app.use(json());
 
 connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
