@@ -9,6 +9,11 @@ const app = express();
 app.use(cors({origin: 'https://neela-safari.vercel.app', credentials: true}));
 app.use(json());
 
+const allowedOrigins = [
+  'https://neela-safari.vercel.app',
+  'http://localhost:5173'
+];
+
 connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(()=>console.log("MongoDB co}nnected"))
   .catch(err=>console.error(err));
