@@ -25,12 +25,21 @@ const infodata = [
     {
         title: "Need to Know",
         img: "https://q0hao2iwgg.ucarecd.net/956e86d5-02bc-4f3f-8607-ed267d97137c/needtoknow.png",
-        content: "Carry valid photo ID, observe wildlife safety instructions, and check for seasonal guidelines."
+        content: `Carry a valid Photo ID (e.g., adhaar card, driver's license).
+                Your own water bottle.
+                Make sure you are dressed appropriately for the weather and terrain.
+                Also your health conditions are fine.
+                You are advised to follow safety guidelines provided by the safari guides.`
     },
     {
         title: "What to Pack",
         img: "https://q0hao2iwgg.ucarecd.net/a587b94f-9df8-4a54-96b1-10c781cdb08d/packing.png",
-        content: "Suggested packing: lightweight clothing, sun protection, camera, binoculars, sturdy shoes." 
+        content: `Suggested packing: 
+            -lightweight clothing 
+            -sun protection 
+            -camera 
+            -binoculars 
+            -sturdy shoes.`
     },
     {
         title: "Weather",
@@ -50,7 +59,7 @@ const carddetails = [
         includes: `Includes High Tea`,
         price: `7000 INR`,
         pickup: `Pickup from Following Locations are Available: `,
-        pickuplpctions: `
+        pickuplocations: `
                 1. Jodhpur
                 2. Udaipur
                 3. Ahmedabad
@@ -66,7 +75,7 @@ const carddetails = [
         includes: `Includes High Tea`,
         price: `7000 INR`,
         pickup: `Pickup from Following Locations are Available: `,
-        pickuplpctions: `
+        pickuplocations: `
                 1. Jodhpur
                 2. Udaipur
                 3. Ahmedabad
@@ -82,7 +91,7 @@ const carddetails = [
         includes: `Includes High Tea and Lunch`,
         price: `25000 INR`,
         pickup: `Pickup from Following Locations are Available: `,
-        pickuplpctions: `
+        pickuplocations: `
                 1. Jodhpur
                 2. Udaipur
                 3. Ahmedabad
@@ -211,7 +220,7 @@ function Home() {
                                 <p><b>Price:</b> {carddetails[modalopen].price}</p>
                                 <p><b>Pickup:</b> {carddetails[modalopen].pickup}</p> 
                                 <p><ul>
-                                    {carddetails[modalopen].pickuplpctions
+                                    {carddetails[modalopen].pickuplocations
                                     .split('\n').filter(line => line.trim() !== "")
                                     .map((line, idx) => (<li key={idx}>{line.trim()}</li> 
                                     ))}
@@ -244,11 +253,26 @@ function Home() {
                     <div className={Styles.indexoverlay} onClick={() => setopoenindex(null)}>
                         <div className={Styles.index} onClick={e => e.stopPropagation()}>
                             <h3><b>{infodata[openindex].title}</b></h3>
+                            <p>
+                                <ul>
+                                    {infodata[openindex].content
+                                    .split('\n').filter(line => line.trim() !== "")
+                                    .map((line, idx) => (<li key={idx}>{line.trim()}</li> 
+                                    ))}
+                                </ul>
+                            </p>
                             {/* For Weather modal, show weather data */}
                             {openindex ===0 ? (
                                 <div>
-                                    <p>{infodata[openindex].content}</p>
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3614.4187514588352!2d73.14038467537715!3d25.053792377803514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjXCsDAzJzEzLjciTiA3M8KwMDgnMzQuNyJF!5e0!3m2!1sen!2sin!4v1762604680235!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    <iframe 
+                                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3614.4187514588352!2d73.14038467537715!3d25.053792377803514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjXCsDAzJzEzLjciTiA3M8KwMDgnMzQuNyJF!5e0!3m2!1sen!2sin!4v1699432680235!5m2!1sen!2sin" 
+                                        width="100%"
+                                        height="450"
+                                        style={{ border: 0, marginBottom: '35px' }}
+                                        allowFullScreen=""
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade"
+                                    />
                                 </div>
                             ) : (null)}
                             {openindex === 3 ? (
@@ -265,7 +289,7 @@ function Home() {
                                     <p>Loading Weather...</p>
                                 )
                             ) : (
-                                <p>{infodata[openindex].content}</p>
+                                null
                             )}
                             {/*<p>{infodata[openindex].content}</p>*/}
                             <button onClick={() => setopoenindex(null)}>Close</button>

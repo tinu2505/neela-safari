@@ -14,7 +14,7 @@ const safaridetails = [
         includes: `Includes High Tea`,
         price: `7000 INR`,
         pickup: `Pickup from Following Locations are Available: `,
-        pickuplpctions: `
+        pickuplocations: `
                 1. Jodhpur
                 2. Udaipur
                 3. Ahmedabad
@@ -30,7 +30,7 @@ const safaridetails = [
         includes: `Includes High Tea`,
         price: `7000 INR`,
         pickup: `Pickup from Following Locations are Available: `,
-        pickuplpctions: `
+        pickuplocations: `
                 1. Jodhpur
                 2. Udaipur
                 3. Ahmedabad
@@ -46,7 +46,7 @@ const safaridetails = [
         includes: `Includes High Tea and Lunch`,
         price: `25000 INR`,
         pickup: `Pickup from Following Locations are Available: `,
-        pickuplpctions: `
+        pickuplocations: `
                 1. Jodhpur
                 2. Udaipur
                 3. Ahmedabad
@@ -84,7 +84,7 @@ function Safaris(){
                             <p><b>Price:</b> {safaridetails[modalopen].price}</p>
                             <p><b>Pickup:</b> {safaridetails[modalopen].pickup}</p>
                             <p><ul>
-                                {safaridetails[modalopen].pickuplpctions
+                                {safaridetails[modalopen].pickuplocations
                                 .split('\n').filter(line => line.trim() !== "")
                                 .map((line, idx) => (<li key={idx}>{line.trim()}</li> 
                                 ))}
