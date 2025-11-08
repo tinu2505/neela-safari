@@ -44,49 +44,49 @@ const carddetails = [
         img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
         title: "Morning Safari",
         content: "Experience the Beauty of Sunrise & Leopards in Hilly terrain of Jawai.",
-        details : `Discover luxury safari experiences at Neela Safari.
-        
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.          
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-            `
+        details : `Discover luxury safari experiences at Neela Safari.`,
+        timing: `5AM to 8AM`,
+        individuals: `Max 5 Individuals per Gypsy`,
+        includes: `Includes High Tea`,
+        price: `7000 INR`,
+        pickup: `Pickup from Following Locations are Available: `,
+        pickuplpctions: `
+                1. Jodhpur
+                2. Udaipur
+                3. Ahmedabad
+                4. Mount Abu`
     },
     {
         img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
         title: "Evening Safari"  ,
         content: "Experience the Beauty of Sunset & Leopards in Hilly terrain of Jawai.",
-        details : `Discover luxury safari experiences at Neela Safari.
-        
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.          
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-            `  
+        details : `Discover luxury safari experiences at Neela Safari.`,
+        timing: `4PM to 7PM`,
+        individuals: `Max 5 Individuals per Gypsy`,
+        includes: `Includes High Tea`,
+        price: `7000 INR`,
+        pickup: `Pickup from Following Locations are Available: `,
+        pickuplpctions: `
+                1. Jodhpur
+                2. Udaipur
+                3. Ahmedabad
+                4. Mount Abu`
     },
     {
         img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
-        title: "All Day Safari",
-        content: "Experience the Beauty of Sunrise & Sunset & Leopards in Hilly terrain of Jawai.",
-        details : `Discover luxury safari experiences at Neela Safari.
-        
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.          
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-            `
-    },
-    {
-        img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
-        title: "Night Camping",
-        content: "Experience the Beauty of Night Camping in Hilly terrain of Jawai under Starry Sky.",
-        details : `Discover luxury safari experiences at Neela Safari.
-        
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.          
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-            `
+        title: "Full Day Safari",
+        content: "Experience the Beauty of Sunrise & Sunset & Leopards in Hilly terrain of Jawai. Complete 360° experience.",
+        details : `Discover luxury safari experiences at Neela Safari.`,
+        timing: `5AM to 8PM`,
+        individuals: `Max 5 Individuals per Gypsy`,
+        includes: `Includes High Tea and Lunch`,
+        price: `25000 INR`,
+        pickup: `Pickup from Following Locations are Available: `,
+        pickuplpctions: `
+                1. Jodhpur
+                2. Udaipur
+                3. Ahmedabad
+                4. Mount Abu`
     }
 ];
 
@@ -141,7 +141,7 @@ function Home() {
             </section>
 
             <div className={Styles.intro}>
-                <h1>Welcome to Neela Safari</h1>
+                <h1>Welcome to The Neela Safari</h1>
                 <p>Experience the wild like never before with Neela Safari. 
                     Our expertly guided tours offer an unforgettable journey through the heart of nature, where you can witness majestic wildlife in their natural habitat.
                     Whether you're seeking thrilling adventures or serene landscapes, Neela Safari promises an unparalleled safari experience that will leave you with lasting memories. 
@@ -203,12 +203,19 @@ function Home() {
                         <div className={Styles.modaloverlay} onclick ={() => setmodalopen(null)}>
                             <div className={Styles.modal} onClick={e => e.stopPropagation()}>
                                 <h3>{carddetails[modalopen].title}</h3>
-                                <ul>
-                                    {carddetails[modalopen].details
+                                <p>{carddetails[modalopen].details}</p>
+                                
+                                <p><b>Timing:</b> {carddetails[modalopen].timing}</p>
+                                <p><b>Individuals:</b> {carddetails[modalopen].individuals}</p>
+                                <p><b>Includes:</b> {carddetails[modalopen].includes}</p>
+                                <p><b>Price:</b> {carddetails[modalopen].price}</p>
+                                <p><b>Pickup:</b> {carddetails[modalopen].pickup}</p> 
+                                <p><ul>
+                                    {carddetails[modalopen].pickuplpctions
                                     .split('\n').filter(line => line.trim() !== "")
                                     .map((line, idx) => (<li key={idx}>{line.trim()}</li> 
                                     ))}
-                                </ul>
+                                </ul></p>
                                 <div className={Styles.modalbuttons}>
                                     <button onClick={() => navigate("/booknow")}>Book Now</button>
                                     <button onClick={() => setmodalopen(null)}>Close</button>
@@ -238,6 +245,12 @@ function Home() {
                         <div className={Styles.index} onClick={e => e.stopPropagation()}>
                             <h3><b>{infodata[openindex].title}</b></h3>
                             {/* For Weather modal, show weather data */}
+                            {openindex ===0 ? (
+                                <div>
+                                    <p>{infodata[openindex].content}</p>
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3614.4187514588352!2d73.14038467537715!3d25.053792377803514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjXCsDAzJzEzLjciTiA3M8KwMDgnMzQuNyJF!5e0!3m2!1sen!2sin!4v1762604680235!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            ) : (null)}
                             {openindex === 3 ? (
                                 weatherdata ? (
                                     <div>
@@ -310,7 +323,7 @@ function Home() {
                         <p>+919079731479</p>
                         <br />
                         <p><b>Message us on Whatsapp:</b></p>
-                        <a href="https://wa.me/+919079731479" target="_blank"><img src="https://q0hao2iwgg.ucarecd.net/96097892-3c64-4cff-9df6-034fcdaee538/whatsapp.webp" alt="whatsapp" /></a>
+                        <a href="https://wa.me/+919079731479?text=Hello%20I%20want%20to%20book%20a%20safari" target="_blank"><img src="https://q0hao2iwgg.ucarecd.net/96097892-3c64-4cff-9df6-034fcdaee538/whatsapp.webp" alt="whatsapp" /></a>
                     </div>
                 </div>
                 {/*<div className={Styles.reachout}>

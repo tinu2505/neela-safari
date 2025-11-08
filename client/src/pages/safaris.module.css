@@ -17,7 +17,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: stretch;
-    gap: 20px;
+    gap: 60px;
     padding-top: 12px;
     margin-top: 32px;
     overflow-x: auto;
@@ -115,7 +115,7 @@
 .modal p {
   margin-bottom: 1.5em;
   font-size: 1.1rem;
-  text-align: center;
+  text-align: left;
 }
 
 .modalbuttons{

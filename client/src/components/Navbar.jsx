@@ -8,7 +8,7 @@ function Navbar() {
 
   return (
     <nav className={styles.nav}>
-      <a href="/"><img src="https://q0hao2iwgg.ucarecd.net/8d119331-fadd-4652-a47c-1bc84135b0d5/logo2.png" alt="Logo" /></a>
+      <a href="/"><h2>THE NEELA SAFARI</h2>{/*<img src="https://q0hao2iwgg.ucarecd.net/c1e6d524-2091-4f10-b423-b0f1f2122032/neelajawaisafari.png" alt="Logo" />*/}</a>
       <button onClick={() => setOpen(!open)} className={styles.hamburger}>
         &#9776;
       </button>

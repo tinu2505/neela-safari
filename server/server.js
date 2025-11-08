@@ -4,6 +4,7 @@ import express, { json } from 'express';
 import { connect } from 'mongoose';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import images from './images.js';
 
 const app = express();
 app.use(cors());
@@ -45,7 +46,9 @@ app.get('/api/form', async (req, res) => {
       res.status(500).json({ message: "Error fetching form entries." });
     }
 });
- 
+
+app.use('/api', images);
+
 // TODO: Add more routes here...
 
 const PORT = process.env.PORT || 5000;

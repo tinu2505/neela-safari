@@ -11,7 +11,7 @@ function Booknow() {
                         <p>Call Us:- +919079731479</p>
                     </div>
                     <div className={Styles.whatsapp}>
-                        <a href="https://wa.me/+919079731479" target="_blank"><img src="https://q0hao2iwgg.ucarecd.net/a1fa153c-5d32-4359-9c51-4bfe485f160d/whatsapp.webp" alt="whatsapp" /></a>
+                        <a href="https://wa.me/+919079731479?text=Hello%20I%20want%20to%20book%20a%20safari" target="_blank"><img src="https://q0hao2iwgg.ucarecd.net/a1fa153c-5d32-4359-9c51-4bfe485f160d/whatsapp.webp" alt="whatsapp" /></a>
                         <p>WhatsApp Us:- +919079731479</p>
                     </div>
                 </div>

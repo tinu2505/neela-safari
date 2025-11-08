@@ -3,51 +3,55 @@ import { useNavigate } from 'react-router-dom';
 import Styles from './safaris.module.css'
 {/*import card1 from '../assets/images/logo(4).png';*/}
 
-const safaridetails = [ 
-    {title : "Morning Safari",
-    img : "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
-    content: "Experience the Beauty of Sunrise & Leopards in Hilly terrain of Jawai.",
-    details : `Discover luxury safari experiences at Neela Safari.
-
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-            `
+const safaridetails = [
+    {
+        img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
+        title: "Morning Safari",
+        content: "Experience the Beauty of Sunrise & Leopards in Hilly terrain of Jawai.",
+        details : `Discover luxury safari experiences at Neela Safari.`,
+        timing: `5AM to 8AM`,
+        individuals: `Max 5 Individuals per Gypsy`,
+        includes: `Includes High Tea`,
+        price: `7000 INR`,
+        pickup: `Pickup from Following Locations are Available: `,
+        pickuplpctions: `
+                1. Jodhpur
+                2. Udaipur
+                3. Ahmedabad
+                4. Mount Abu`
     },
-    {title : "Evening Safari",
-    img : "https://q0hao2iwgg.ucarecd.net/c9eece5a-e81f-473d-af19-56b68e03b4e0/logo3.png",
-    content: "Experience the Beauty of Sunset & Leopards in Hilly terrain of Jawai.",
-    details : `Discover luxury safari experiences at Neela Safari.  
-                
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.      
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-            `
+    {
+        img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
+        title: "Evening Safari"  ,
+        content: "Experience the Beauty of Sunset & Leopards in Hilly terrain of Jawai.",
+        details : `Discover luxury safari experiences at Neela Safari.`,
+        timing: `4PM to 7PM`,
+        individuals: `Max 5 Individuals per Gypsy`,
+        includes: `Includes High Tea`,
+        price: `7000 INR`,
+        pickup: `Pickup from Following Locations are Available: `,
+        pickuplpctions: `
+                1. Jodhpur
+                2. Udaipur
+                3. Ahmedabad
+                4. Mount Abu`
     },
-    {title : "Full Day Safari",
-    img : "https://q0hao2iwgg.ucarecd.net/a8926cd9-c55e-44b4-aff8-cc7cdec15676/maps.png",
-    content: "Experience the Beauty of Sunrise & Sunset & Leopards in Hilly terrain of Jawai.",
-    details : `Discover luxury safari experiences at Neela Safari.  
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-            `
-    },
-    {title : "Night Camping",
-    img : "https://q0hao2iwgg.ucarecd.net/96097892-3c64-4cff-9df6-034fcdaee538/whatsapp.webp",
-    content: "Experience the thrill of a Night Safari in the wild of Jawai.",
-    details : `Discover luxury safari experiences at Neela Safari.
-        
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.          
-                Experience the thrill of an 8 to 8 safari, where you can immerse yourself in the wild from dawn till dusk.
-            `
-    },
-
+    {
+        img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
+        title: "Full Day Safari",
+        content: "Experience the Beauty of Sunrise & Sunset & Leopards in Hilly terrain of Jawai.",
+        details : `Discover luxury safari experiences at Neela Safari.`,
+        timing: `5AM to 8PM`,
+        individuals: `Max 5 Individuals per Gypsy`,
+        includes: `Includes High Tea and Lunch`,
+        price: `25000 INR`,
+        pickup: `Pickup from Following Locations are Available: `,
+        pickuplpctions: `
+                1. Jodhpur
+                2. Udaipur
+                3. Ahmedabad
+                4. Mount Abu`
+    }
 ];
 
 function Safaris(){
@@ -73,12 +77,18 @@ function Safaris(){
                     <div className={Styles.modaloverlay} onClick={() => setmodalopen(null)}>
                         <div className={Styles.modal} onClick={e => e.stopPropagation()}>
                             <h3>{safaridetails[modalopen].title}</h3>
-                            <ul>
-                                {safaridetails[modalopen].details
+                            <p>{safaridetails[modalopen].details}</p>
+                            <p><b>Timing:</b> {safaridetails[modalopen].timing}</p>
+                            <p><b>Individuals:</b> {safaridetails[modalopen].individuals}</p>
+                            <p><b>Includes:</b> {safaridetails[modalopen].includes}</p>
+                            <p><b>Price:</b> {safaridetails[modalopen].price}</p>
+                            <p><b>Pickup:</b> {safaridetails[modalopen].pickup}</p>
+                            <p><ul>
+                                {safaridetails[modalopen].pickuplpctions
                                 .split('\n').filter(line => line.trim() !== "")
                                 .map((line, idx) => (<li key={idx}>{line.trim()}</li> 
                                 ))}
-                            </ul>
+                            </ul></p>
                             <div className={Styles.modalbuttons}>
                                 <button onClick={() => {navigate('/booknow')}}>Book Now</button>
                                 <button onClick={() => setmodalopen(null)}>Close</button>

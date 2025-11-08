@@ -9,13 +9,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0rem 2vw;
+  padding: 1rem 2vw;
   color: #ba8b48; /* deep brown */
 }
 
+.nav h2{
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 000;
+  color: #ba8b48;; /* darker brown */
+}
+
 .nav img{
-    height: 80px;
-  width: auto;
+    height: 110px;
+    width: auto;
 }
 
 .links{
