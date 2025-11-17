@@ -20,7 +20,7 @@ const infodata = [
     {
         title : "Maps & Direction",
         img: "https://q0hao2iwgg.ucarecd.net/a8926cd9-c55e-44b4-aff8-cc7cdec15676/maps.png",
-        content: "Here are directions-You can reach Neela Safari via XYZ route. Use Google Maps for navigation."
+        content: "Here are directions-You can reach Neela Safari via this route. Use Google Maps for navigation."
     },
     {
         title: "Need to Know",
@@ -323,7 +323,7 @@ function Home() {
                         Your browser does not support the video tag.
                     </video>*/}
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/KGT0I42cm2o?si=yWzvce4eGh-Qt0mm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    <img src="https://q0hao2iwgg.ucarecd.net/c43fa468-d3e5-4cb5-8273-35d7d9e18a69/sample2.jpg" alt="" />
+                    <img src="https://res.cloudinary.com/dbjm1xcza/image/upload/v1763315439/WhatsApp_Image_2025-11-06_at_10.28.14_PM_2_rpgoty.jpg" alt="" />
                     <a href="/gallery"><p>&gt;</p></a>
                 </div>
             </div>
@@ -341,7 +341,7 @@ function Home() {
                     <div className={Styles.reachout}>
                         <h2>Reach Out To Us On:</h2>
                         <p><b>Address:</b></p>
-                        <p>dasvdsvdsvdvdvdvdsvsd</p>
+                        <p>343V+H7, Doodni, Rajasthan 306126</p>
                         <br />
                         <p><b>Phone:</b></p>
                         <p>+919079731479</p>

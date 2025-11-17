@@ -13,12 +13,20 @@ import feedback from '../assets/images/feedback.png';*/}
 function Gallery() {
     
     const [images, setImages] = useState([]);
+    const [selectedImage, setSelectedImage] = useState(null);
 
-    useEffect(() => {
-        fetch('/api/images')
-        .then(res => res.json())
+    const openModal = (url) => {
+        setSelectedImage(url);
+    };
+    const closeModal = () => {
+        setSelectedImage(null);
+    };
+
+    useEffect (() => {
+        fetch('http://localhost:8080/api/images')
+        .then((res) => res.json())
         .then(setImages)
-        .catch(err => console.error('Unable to fetch images:', err));
+        .catch(console.error)
     }, []);
 
     return(
@@ -26,10 +34,16 @@ function Gallery() {
             <h1>Gallery</h1>
             <p>Beauty Captured!</p>
             <div className={Styles.media}>
-                {images.map(img => (
-                    <img key={img.uuid} src={img.cdn_url} alt={img.original_filename || 'Uploadcare Image'} />
+                {images.map((url, idx) => (
+                    <img key={idx} src={url} alt={`Gallery item ${idx + 1}`} onClick={() => openModal(url)} />
                 ))}
-            </div>
+            </div> 
+            {/* Modal for displaying selected image */}
+            {selectedImage && (
+                <div className={Styles.modal} onClick={closeModal}>
+                    <img src={selectedImage} alt='Enlarged' style={{ maxHeight: '90%', maxWidth: '90%' }} />
+                </div>
+            )}
         </div>
     );
 }

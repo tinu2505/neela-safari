@@ -12,7 +12,7 @@ function About(){
                     Join us, and explore Jawai like never before — where every safari is a story, and every story is unforgettable.</p>
             </div> 
             <div className={Styles.image}>
-                <img src="https://q0hao2iwgg.ucarecd.net/f2d97ffc-3093-44e9-b6bf-0078d4da4fc8/aboutsection.png" alt="about" />
+                <img src="https://q0hao2iwgg.ucarecd.net/c80f86d4-5081-4d49-98f6-69311953993e/neelasafari.png" alt="about" />
             </div>
         </div>
     );
