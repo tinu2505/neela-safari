@@ -7,7 +7,15 @@ import mongoose from 'mongoose';
 import images from './images.js';
 
 const app = express();
-app.use(cors());
+app.use(cors({
+origin: [
+"https://neelasafari.com",
+"http://98.92.243.35:5173",
+"http://localhost:5173"
+],
+methods: ["GET", "POST", "PUT", "DELETE"],
+credentials: true
+}));
 app.use(json());
 
 connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })

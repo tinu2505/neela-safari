@@ -23,7 +23,7 @@ function Gallery() {
     };
 
     useEffect (() => {
-        fetch('http://localhost:8080/api/images')
+        fetch('https://api.neelasafari.com/api/images')
         .then((res) => res.json())
         .then(setImages)
         .catch(console.error)
