@@ -9,6 +9,7 @@ import images from './images.js';
 const app = express();
 app.use(cors({
 origin: [
+"https://www.neelasafari.com",
 "https://neelasafari.com",
 "http://98.92.243.35:5173",
 "http://localhost:5173"
