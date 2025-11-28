@@ -14,7 +14,9 @@ import packing from '../assets/images/packing.png';
 import rates from '../assets/images/rates.png';
 import weather from '../assets/images/weather.png';
 import feedback from '../assets/images/feedback.png';
-import whatsapp from '../assets/images/whatsapp.webp';*/}
+import whatsapp from '../assets/images/whatsapp.webp';
+import leo from '../assets/images/leo.jpg';*/}
+
 
 const infodata = [
     {
@@ -99,6 +101,14 @@ const carddetails = [
     }
 ];
 
+const heroimages = [ 
+    "https://res.cloudinary.com/dbjm1xcza/image/upload/v1764333589/IMG_20230917_115757_efev9g.jpg",
+    "https://res.cloudinary.com/dbjm1xcza/image/upload/v1764333588/IMG_20230507_180920_pp80qa.jpg",
+    "https://res.cloudinary.com/dbjm1xcza/image/upload/v1763315440/WhatsApp_Image_2025-11-06_at_10.28.16_PM_2_cwi17u.jpg",
+    "https://res.cloudinary.com/dbjm1xcza/image/upload/v1763315439/WhatsApp_Image_2025-11-06_at_10.28.12_PM_hshbsc.jpg",
+    
+];
+
 function Home() {
     const navigate = useNavigate();
     const [openindex, setopoenindex] = useState(null);      
@@ -106,6 +116,14 @@ function Home() {
     const [modalopen, setmodalopen] = useState(null);
     const [name, setName] = useState("");
     const [message, setMessage] = useState("");
+    const [currentslide, setcurrentslide] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setcurrentslide((prev) => (prev +1) % heroimages.length);
+        }, 3000);
+        return () => clearInterval(interval); 
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -146,7 +164,17 @@ function Home() {
     return(
         <div>
             <section className={Styles.hero}>
-                    <img src="https://q0hao2iwgg.ucarecd.net/2faaa8c3-9ed5-44c0-8147-4faa401ac8e4/herosection.png" alt="heroImage" />
+                    {/*<img src={leo} alt="heroImage" />*/}
+                    <div className={Styles.slideshow}>
+                        {heroimages.map((src, index) => (
+                            <img
+                                key={index}
+                                src={src}
+                                alt={`Slide ${index + 1}`}
+                                className={`${Styles.heroslide} ${index === currentslide ? Styles.active : ''}`}
+                        />
+                        ))}
+                    </div>
             </section>
 
             <div className={Styles.intro}>

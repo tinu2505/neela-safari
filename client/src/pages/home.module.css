@@ -3,9 +3,54 @@
     height: 620px;
 }
 
+.slideshow{
+    position: relative;
+    width: 100%;
+    height: 620px;
+    overflow: hidden;
+}
+
+.heroslide{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.heroslide.active{
+    opacity: 1;
+}
+
+@media (max-width: 1024px) {
+    .slideshow{
+        height: 55vh;
+    }
+}
+
 @media (max-width: 768px) {
-    .hero img{
-        height: 300px;
+    .slideshow{
+        height: 50vh;
+        min-height: 300px;
+    }
+
+    .heroslide{
+        height: 100vh;
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slideshow{
+        height: 45vh;
+        min-height: 250px;
+    }
+
+    .heroslide{
+        object-position: center top;
     }
 }
 
