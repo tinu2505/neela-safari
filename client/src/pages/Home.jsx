@@ -349,9 +349,11 @@ function Home() {
                     {/*<video width="560" height="315" controls>
                         <source src={video} type="video/mp4"/>
                         Your browser does not support the video tag.
-                    </video>*/}
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/KGT0I42cm2o?si=yWzvce4eGh-Qt0mm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </video>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/KGT0I42cm2o?si=yWzvce4eGh-Qt0mm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>*/}
                     <img src="https://res.cloudinary.com/dbjm1xcza/image/upload/v1763315439/WhatsApp_Image_2025-11-06_at_10.28.14_PM_2_rpgoty.jpg" alt="" />
+                    <img src="https://res.cloudinary.com/dbjm1xcza/image/upload/v1763315439/WhatsApp_Image_2025-11-06_at_10.28.14_PM_1_uxcagq.jpg" alt="" />
+                    <img src="https://res.cloudinary.com/dbjm1xcza/image/upload/v1763315440/WhatsApp_Image_2025-11-06_at_10.28.16_PM_1_hletfj.jpg" alt="" />
                     <a href="/gallery"><p>&gt;</p></a>
                 </div>
             </div>
