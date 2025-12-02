@@ -25,6 +25,38 @@
     opacity: 1;
 }
 
+.herotext{
+    position: absolute;
+    top: 70%;
+    left: 45%;
+    transform: translateX(-40%);
+    color: white;
+    text-align: center;
+    z-index: 10;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+    color: #ffffff;
+    background: linear-gradient(
+        to bottom,
+        rgba(167, 164, 164, 0.65),
+        rgba(167, 164, 164, 0.35)
+    );
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+    padding: 20px 30px;
+}
+
+.herotext h1{
+    font-size: 3rem;
+    margin: 0;
+}
+
+.herotext p{
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+
 @media (max-width: 1024px) {
     .slideshow{
         height: 55vh;
@@ -40,6 +72,14 @@
     .heroslide{
         height: 100vh;
         max-height: 400px;
+    }
+
+    .herotext h1{
+        font-size: 2rem;
+    }
+
+    .herotext p{
+        font-size: 1rem;
     }
 }
 

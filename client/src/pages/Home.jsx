@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FileUploaderRegular } from '@uploadcare/react-uploader';
-import '@uploadcare/react-uploader/core.css';
 import Styles from './home.module.css';
+import Uploadwidget from "../components/Uploadwidget.jsx";
 {/*import video from '../assets/images/safari-video.mp4 
 import herosection from '../assets/images/herosection.png';
 import logo from '../assets/images/logo(5).png';
@@ -117,6 +116,7 @@ function Home() {
     const [name, setName] = useState("");
     const [message, setMessage] = useState("");
     const [currentslide, setcurrentslide] = useState(0);
+    const [uploadedImages, setUploadedImages] = useState("");
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -131,7 +131,7 @@ function Home() {
             const res = await fetch("https://api.neelasafari.com/api/form", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, message }),
+            body: JSON.stringify({ name, message, imageUrl: uploadedImages }),
             });
             const data = await res.json();
             if (res.ok) {
@@ -164,17 +164,21 @@ function Home() {
     return(
         <div>
             <section className={Styles.hero}>
-                    {/*<img src={leo} alt="heroImage" />*/}
-                    <div className={Styles.slideshow}>
-                        {heroimages.map((src, index) => (
-                            <img
-                                key={index}
-                                src={src}
-                                alt={`Slide ${index + 1}`}
-                                className={`${Styles.heroslide} ${index === currentslide ? Styles.active : ''}`}
-                        />
-                        ))}
-                    </div>
+                {/*<img src={leo} alt="heroImage" />*/}
+                <div className={Styles.slideshow}>
+                    {heroimages.map((src, index) => (
+                        <img
+                            key={index}
+                            src={src}
+                            alt={`Slide ${index + 1}`}
+                            className={`${Styles.heroslide} ${index === currentslide ? Styles.active : ''}`}
+                    />
+                    ))}
+                </div>
+                {/*<div className={Styles.herotext}>
+                    <h1>Neela Safari</h1>
+                    <p>Experience beautiful sight of LEOPARDS, BIRDS & CROCODILES  of JAWAI Like Never Before!</p>
+                </div>*/}
             </section>
 
             <div className={Styles.intro}>
@@ -377,7 +381,7 @@ function Home() {
                         <p>+919079731479</p>
                         <br />
                         <p><b>Message us on Whatsapp:</b></p>
-                        <a href="https://wa.me/+919079731479?text=Hello%20I%20want%20to%20book%20a%20safari" target="_blank"><img src="https://q0hao2iwgg.ucarecd.net/96097892-3c64-4cff-9df6-034fcdaee538/whatsapp.webp" alt="whatsapp" /></a>
+                        <a href="https://wa.me/+918955698133?text=Hello%20I%20want%20to%20book%20a%20safari" target="_blank"><img src="https://q0hao2iwgg.ucarecd.net/96097892-3c64-4cff-9df6-034fcdaee538/whatsapp.webp" alt="whatsapp" /></a>
                     </div>
                 </div>
                 {/*<div className={Styles.reachout}>
@@ -399,17 +403,13 @@ function Home() {
                     <p><b>Share Your Moments With Us</b></p>
                     <br />
                     <div>
-                        <FileUploaderRegular
-                            sourceList="local, facebook, gdrive"
-                            classNameUploader="uc-light"
-                            pubkey="1203ae650b6f89e1fbe2"
-                            onCommonUploadSuccess={(e) =>
-                                console.log(
-                                    "Uploaded files URL list",
-                                    e.detail.successEntries.map((entry) => entry.cdnUrl)
-                                )
-                            }
-                        />
+                        <Uploadwidget onupload={(url) => setUploadedImages((prev) => [...prev, url])} />
+                            {uploadedImages && (
+                                <div style={{ marginTop: "10px" }}>
+                                    <p>Uploaded Images Preview:</p>
+                                    <img src={uploadedImages} alt="Uploaded" style={{ maxWidth: "100%", borderRadius: "8px" }} />
+                                </div>
+                            )}
                     </div>
                 </div>
             </div>

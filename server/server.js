@@ -27,6 +27,7 @@ connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true
 const formSchema = new mongoose.Schema({
   name: String,
   message: String,
+  imageUrls: [String],
 }, { timestamps: true });
 
 const FormEntry = mongoose.model('FormEntry', formSchema);
