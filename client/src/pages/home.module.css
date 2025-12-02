@@ -663,11 +663,11 @@
 
 .reachout{
     padding: 15px;
-    
+    border-radius: 14px;
     justify-content: center;
     align-items: stretch;
     border-radius: 14px;
-    
+    box-shadow: 0 4px 24px rgba(44,22,8,0.09);
     
 }
 
@@ -678,7 +678,7 @@
 }
 
 .reachout p{
-    font-size: 1.06rem;
+    font-size: 1.3rem;
     text-align: center;
 }
 
@@ -702,14 +702,12 @@
 
 .fileupload{
     width: 350px;
-    height: 350px;
+    height: auto;
     padding: 20px;
     text-align: center;
     justify-content: center;
     align-items: stretch;
-    border-radius: 14px;
     max-width: 880px;
-    box-shadow: 0 4px 24px rgba(44,22,8,0.09);
 }
 
 .fileupload h2{
@@ -724,9 +722,65 @@
 
 @media (max-width: 800px) {
     .fileupload{
-        width: auto;
+        width: 100%;
         flex-direction: column;
         align-items: center;
         box-shadow: 0 2px 6px rgba(44,22,8,0.11);    
     }
+}
+
+.reviewbox{
+    width: 100%;
+    max-width: 320px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: #faf6ef;
+    box-shadow: 0 2px 8px rgba(44,22,8,0.08);
+    text-align: left;
+}
+
+.reviewbox h3{
+    margin: 0 0 10px;
+    font-size: 1.3rem;
+    
+}
+
+.reviewviewport{
+    position: relative;
+    overflow: hidden;
+    height: 110px;
+}
+
+.reviewitem{
+    position: absolute;
+    inset: 0;
+    padding-right: 4px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.reviewitemactive{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reviewitemhidden{
+    pointer-events: none;
+}
+
+.reviewmessage{
+    font-size: 0.98rem;
+    line-height: 1.4;
+    margin: 0 0 4px;
+}
+
+.reviewname{
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+    
 }

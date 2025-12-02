@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Styles from './home.module.css';
 import Uploadwidget from "../components/Uploadwidget.jsx";
+import { use } from "react";
 {/*import video from '../assets/images/safari-video.mp4 
 import herosection from '../assets/images/herosection.png';
 import logo from '../assets/images/logo(5).png';
@@ -108,6 +109,25 @@ const heroimages = [
     
 ];
 
+const reviews = [
+    {
+        name: "Rahul Chudhary",
+        message: "Amazing safari experience, spotted multiple leopards and the team was very professional."
+    },
+    {
+        name: "Abhi Singh",
+        message: "Beautiful landscapes, well-organised trips and very friendly staff. Highly recommended!"
+    },
+    {
+        name: "Visvapal Singh",
+        message: "A must-visit for wildlife enthusiasts. The guides were knowledgeable and made the experience unforgettable."
+    },
+    {
+        name: "Laxman Meena",
+        message: "The Jawai sunrise safari was unforgettable. Great hospitality and safe drives."
+    },
+];
+
 function Home() {
     const navigate = useNavigate();
     const [openindex, setopoenindex] = useState(null);      
@@ -117,6 +137,7 @@ function Home() {
     const [message, setMessage] = useState("");
     const [currentslide, setcurrentslide] = useState(0);
     const [uploadedImages, setUploadedImages] = useState("");
+    const [currentreview, setcurrentreview] = useState(0);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -160,6 +181,13 @@ function Home() {
             .catch(() => setweatherdata(null));
         }
     },[openindex]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setcurrentreview((prev) => (prev + 1) % reviews.length);
+        }, 4000);
+        return () => clearInterval(interval);
+    }, [reviews.length]);
 
     return(
         <div>
@@ -328,23 +356,6 @@ function Home() {
                         </div>
                     </div>
                 )}
-
-                {/*<div className={Styles.infocard} onClick={() => setModalOpen(true)}>
-                    <img src={maps} alt="maps"/>
-                    <h2>Maps & Direction</h2>
-                </div>
-                <div className={Styles.infocard} onClick={() => setModalOpen(true)}>
-                    <img src={needtoknow} alt="needtoknow"/>
-                    <h2>Need To Know</h2>
-                </div>
-                <div className={Styles.infocard} onClick={() => setModalOpen(true)}>
-                    <img src={packing} alt="packing"/>
-                    <h2>Need to Pack</h2>
-                </div>
-                <div className={Styles.infocard} onClick={() => setModalOpen(true)}>
-                    <img src={weather} alt="weather"/>
-                    <h2>Weather</h2>
-                </div>*/}
             </div>
 
             <div className={Styles.gallery}>
@@ -372,46 +383,49 @@ function Home() {
                             <button type="submit">Submit</button>
                         </form>
                     </div>
-                    <div className={Styles.reachout}>
-                        <h2>Reach Out To Us On:</h2>
-                        <p><b>Address:</b></p>
-                        <p>343V+H7, Doodni, Rajasthan 306126</p>
+                    <div className={Styles.fileupload}>
+                        <h2>Your Responses!</h2>
+                        <div className={Styles.reviewbox}>
+                            <h3>Guest Reviews</h3>
+                            <div className={Styles.reviewviewport}>
+                                {reviews.map((rev, idx) => (
+                                    <div key={idx} className={
+                                        idx === currentreview 
+                                        ? `${Styles.reviewitem} ${Styles.reviewitemactive}`
+                                        : `${Styles.reviewitem} ${Styles.reviewitemhidden}`
+                                    }>
+                                        <p className={Styles.reviewmessage}>"{rev.message}"</p>
+                                        <p className={Styles.reviewname}>- {rev.name}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                         <br />
-                        <p><b>Phone:</b></p>
-                        <p>+919079731479</p>
+                        <p><b>Share Your Moments With Us</b></p>
                         <br />
-                        <p><b>Message us on Whatsapp:</b></p>
-                        <a href="https://wa.me/+918955698133?text=Hello%20I%20want%20to%20book%20a%20safari" target="_blank"><img src="https://q0hao2iwgg.ucarecd.net/96097892-3c64-4cff-9df6-034fcdaee538/whatsapp.webp" alt="whatsapp" /></a>
+                        <div>
+                            <Uploadwidget onupload={(url) => setUploadedImages((prev) => [...prev, url])} />
+                                {uploadedImages && (
+                                    <div style={{ marginTop: "10px" }}>
+                                        <p>Uploaded Images Preview:</p>
+                                        <img src={uploadedImages} alt="Uploaded" style={{ maxWidth: "100%", borderRadius: "8px" }} />
+                                    </div>
+                                )}
+                        </div>
                     </div>
                 </div>
-                {/*<div className={Styles.reachout}>
+                <div className={Styles.reachout}>
                     <h2>Reach Out To Us On:</h2>
                     <p><b>Address:</b></p>
-                    <br />
-                    <p>dasvdsvdsvdvdvdvdsvsd</p>
+                    <p>343V+H7, Doodni, Rajasthan 306126</p>
                     <br />
                     <p><b>Phone:</b></p>
-                    <br />
                     <p>+919079731479</p>
                     <br />
                     <p><b>Message us on Whatsapp:</b></p>
-                    <a href=""><img src="https://q0hao2iwgg.ucarecd.net/96097892-3c64-4cff-9df6-034fcdaee538/whatsapp.webp" alt="whatsapp" /></a>
-                </div>*/}
-                 <div className={Styles.fileupload}>
-                    <h2>Have You Travelled With Us!</h2>
-                    <br />
-                    <p><b>Share Your Moments With Us</b></p>
-                    <br />
-                    <div>
-                        <Uploadwidget onupload={(url) => setUploadedImages((prev) => [...prev, url])} />
-                            {uploadedImages && (
-                                <div style={{ marginTop: "10px" }}>
-                                    <p>Uploaded Images Preview:</p>
-                                    <img src={uploadedImages} alt="Uploaded" style={{ maxWidth: "100%", borderRadius: "8px" }} />
-                                </div>
-                            )}
-                    </div>
+                    <a href="https://wa.me/+918955698133?text=Hello%20I%20want%20to%20book%20a%20safari" target="_blank"><img src="https://q0hao2iwgg.ucarecd.net/96097892-3c64-4cff-9df6-034fcdaee538/whatsapp.webp" alt="whatsapp" /></a>
                 </div>
+                 
             </div>
         </div>
     );
