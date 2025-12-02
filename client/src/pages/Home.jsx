@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Styles from './home.module.css';
 import Uploadwidget from "../components/Uploadwidget.jsx";
 {/*import video from '../assets/images/safari-video.mp4 
@@ -191,7 +191,7 @@ function Home() {
             </div>
 
             <div className={Styles.experiences}>
-                <a href="/safaris"><h1>Experiences</h1></a>
+                <Link to="/safaris"><h1>Experiences</h1></Link>
                 {/*<div className={Styles.cards}>
                     <div className={Styles.card}>
                         <img src="https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png" alt="card1"/>
@@ -358,7 +358,7 @@ function Home() {
                     <img src="https://res.cloudinary.com/dbjm1xcza/image/upload/v1763315439/WhatsApp_Image_2025-11-06_at_10.28.14_PM_2_rpgoty.jpg" alt="" />
                     <img src="https://res.cloudinary.com/dbjm1xcza/image/upload/v1763315439/WhatsApp_Image_2025-11-06_at_10.28.14_PM_1_uxcagq.jpg" alt="" />
                     <img src="https://res.cloudinary.com/dbjm1xcza/image/upload/v1763315440/WhatsApp_Image_2025-11-06_at_10.28.16_PM_1_hletfj.jpg" alt="" />
-                    <a href="/gallery"><p>&gt;</p></a>
+                    <Link to="/gallery"><p>&gt;</p></Link>
                 </div>
             </div>
             
