@@ -40,8 +40,11 @@ function Gallery() {
             </div> 
             {/* Modal for displaying selected image */}
             {selectedImage && (
-                <div className={Styles.modal} onClick={closeModal}>
-                    <img src={selectedImage} alt='Enlarged' style={{ maxHeight: '90%', maxWidth: '90%' }} />
+                <div className={Styles.modaloverlay} onClick={closeModal}>
+                    <div className={Styles.modalcontent} onClick={(e) => e.stopPropagation()}>
+                        <button className={Styles.closebutton} onClick={closeModal}>×</button>
+                        <img src={selectedImage} alt="preview" />
+                    </div>
                 </div>
             )}
         </div>
