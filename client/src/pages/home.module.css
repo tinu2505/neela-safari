@@ -571,7 +571,7 @@
 
 .feedform{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     padding: 22px 28px;
     

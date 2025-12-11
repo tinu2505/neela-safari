@@ -21,12 +21,12 @@ import leo from '../assets/images/leo.jpg';*/}
 const infodata = [
     {
         title : "Maps & Direction",
-        img: "https://q0hao2iwgg.ucarecd.net/a8926cd9-c55e-44b4-aff8-cc7cdec15676/maps.png",
+        img: "https://g9xx1jeksl.ucarecd.net/a4149d97-98b0-42c8-a891-53d7d503e7de/maps.png",
         content: "Here are directions-You can reach Neela Safari via this route. Use Google Maps for navigation."
     },
     {
         title: "Need to Know",
-        img: "https://q0hao2iwgg.ucarecd.net/956e86d5-02bc-4f3f-8607-ed267d97137c/needtoknow.png",
+        img: "https://g9xx1jeksl.ucarecd.net/84f68feb-1913-4eeb-a1cc-fb8d43949392/needtoknow.png",
         content: `Carry a valid Photo ID (e.g., adhaar card, driver's license).
                 Your own water bottle.
                 Make sure you are dressed appropriately for the weather and terrain.
@@ -35,7 +35,7 @@ const infodata = [
     },
     {
         title: "What to Pack",
-        img: "https://q0hao2iwgg.ucarecd.net/a587b94f-9df8-4a54-96b1-10c781cdb08d/packing.png",
+        img: "https://g9xx1jeksl.ucarecd.net/b55b1b78-8748-461a-84eb-99d383a362dd/packing.png",
         content: `Suggested packing: 
             -lightweight clothing 
             -sun protection 
@@ -45,14 +45,14 @@ const infodata = [
     },
     {
         title: "Weather",
-        img: "https://q0hao2iwgg.ucarecd.net/bee43947-ba18-40a5-bfb0-5b35d2398663/weather.png",
+        img: "https://g9xx1jeksl.ucarecd.net/ce9749b2-9870-4321-bdb3-c9b2ff6da82a/weather.png",
         content: "Typical weather is warm and dry; check forecast before arrival for latest updates."
     }
 ];
 
 const carddetails = [
     {
-        img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
+        img: "https://g9xx1jeksl.ucarecd.net/e2ec5a5b-f74d-4d5d-a0be-fa9119584ece/logo4.png",
         title: "Morning Safari",
         content: "Experience the Beauty of Sunrise & Leopards in Hilly terrain of Jawai.",
         details : `Discover luxury safari experiences at Neela Safari.`,
@@ -68,7 +68,7 @@ const carddetails = [
                 4. Mount Abu`
     },
     {
-        img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
+        img: "https://g9xx1jeksl.ucarecd.net/e2ec5a5b-f74d-4d5d-a0be-fa9119584ece/logo4.png",
         title: "Evening Safari"  ,
         content: "Experience the Beauty of Sunset & Leopards in Hilly terrain of Jawai.",
         details : `Discover luxury safari experiences at Neela Safari.`,
@@ -84,7 +84,7 @@ const carddetails = [
                 4. Mount Abu`
     },
     {
-        img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
+        img: "https://g9xx1jeksl.ucarecd.net/e2ec5a5b-f74d-4d5d-a0be-fa9119584ece/logo4.png",
         title: "Full Day Safari",
         content: "Experience the Beauty of Sunrise & Sunset & Leopards in Hilly terrain of Jawai. Complete 360° experience.",
         details : `Discover luxury safari experiences at Neela Safari.`,
@@ -423,7 +423,7 @@ function Home() {
                     <p>+919079731479</p>
                     <br />
                     <p><b>Message us on Whatsapp:</b></p>
-                    <a href="https://wa.me/+918955698133?text=Hello%20I%20want%20to%20book%20a%20safari" target="_blank"><img src="https://q0hao2iwgg.ucarecd.net/96097892-3c64-4cff-9df6-034fcdaee538/whatsapp.webp" alt="whatsapp" /></a>
+                    <a href="https://wa.me/+918955698133?text=Hello%20I%20want%20to%20book%20a%20safari" target="_blank"><img src="https://g9xx1jeksl.ucarecd.net/9f2fdb17-84cd-4068-bc4c-30534133b107/whatsapp.webp" alt="whatsapp" /></a>
                 </div>
                  
             </div>

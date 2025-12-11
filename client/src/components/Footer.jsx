@@ -14,7 +14,7 @@ function Footer(){
             <div className={styles.socials}>
                 <p>Reach Out On:</p>
                 <div>
-                    <a href="https://www.instagram.com/neela_safari/" target="_blank"><img src="https://q0hao2iwgg.ucarecd.net/7b9f67d6-dbea-4380-a63c-89cef815340a/insta.png" alt="insta" /></a>
+                    <a href="https://www.instagram.com/neela_safari/" target="_blank"><img src="https://g9xx1jeksl.ucarecd.net/1c2788e2-833f-4d39-9ccd-ea73967fc4b9/insta.png" alt="insta" /></a>
                 </div>
             </div>
             <p>© {new Date().getFullYear()} NEELA SAFARI. All rights reserved.</p>
