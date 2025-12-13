@@ -572,9 +572,8 @@
 .feedform{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content:flex-start;
     padding: 22px 28px;
-    
     font-size: 1.1rem;
     width: 55%;
     gap: 20px;
@@ -584,7 +583,7 @@
 .feedform h2{
     text-align: center;
     font-size: 2.1rem;
-    margin-bottom: 18px;
+    margin-bottom: 10px;
 }
 
 .feedform input,
@@ -732,6 +731,7 @@
 .reviewbox{
     width: 100%;
     max-width: 320px;
+    min-height: 300px;
     padding: 16px 18px;
     border-radius: 12px;
     background: #faf6ef;
@@ -747,40 +747,60 @@
 
 .reviewviewport{
     position: relative;
-    overflow: hidden;
-    height: 110px;
-}
-
-.reviewitem{
-    position: absolute;
-    inset: 0;
+    overflow-y: auto;
+    max-height: 220px;
     padding-right: 4px;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    scrollbar-width: thin;
+    scrollbar-color: #ba8b48 #f0e6d8;
 }
 
-.reviewitemactive{
-    opacity: 1;
-    transform: translateY(0);
+.reviewviewport::-webkit-scrollbar {
+    width: 6px;
+}
+ 
+.reviewviewport::-webkit-scrollbar-track {
+    background: #f0e6d8;
+    border-radius: 3px;
 }
 
-.reviewitemhidden{
-    pointer-events: none;
+.reviewviewport::-webkit-scrollbar-thumb {
+    background-color: #ba8b48;
+    border-radius: 3px;
 }
 
-.reviewmessage{
-    font-size: 0.98rem;
-    line-height: 1.4;
-    margin: 0 0 4px;
+.reviewviewport::-webkit-scrollbar-thumb:hover{
+    background: #9c6f33;
 }
 
-.reviewname{
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin: 0;
-    
+@media (max-width: 900px) {
+    .reviewbox{
+        max-width: 360px;
+        margin: 0 auto;
+        min-height: 260px;
+    }
+}
+
+@media (max-width: 600px) {
+    .reviewbox{
+        max-width: 100%;
+        min-height: auto;
+        padding: 14px 12px;
+        margin-top: 16px;
+        box-shadow: 0 2px 6px rgba(44,22,8,0.11);
+    }
+}
+
+.uploadsection{
+    margin-top: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(44,22,8,0.08);
+    padding: 16px 18px;
+}
+
+.uploadwidget{
+    border: 2px dashed #ba8b48;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    background: #fffefe;
 }

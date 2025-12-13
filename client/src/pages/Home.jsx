@@ -138,6 +138,8 @@ function Home() {
     const [currentslide, setcurrentslide] = useState(0);
     const [uploadedImages, setUploadedImages] = useState("");
     const [currentreview, setcurrentreview] = useState(0);
+    const [reviews, setreviews] = useState([]);
+    const [ispaused, setispaused] = useState(false);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -183,11 +185,21 @@ function Home() {
     },[openindex]);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setcurrentreview((prev) => (prev + 1) % reviews.length);
+        fetch("https://api.neelasafari.com/api/form")
+        .then((res) => res.json())
+        .then((data) => setreviews(data))
+        .catch((err) => console.error("Error loading Reviews", err));
+    }, [])
+
+    useEffect(() => {
+        if(reviews.length === 0 || ispaused) return;
+
+        const interval = setInterval( () => {
+            setcurrentreview(prev => (prev + 1) % reviews.length);
         }, 4000);
+
         return () => clearInterval(interval);
-    }, [reviews.length]);
+    }, [reviews, ispaused]);
 
     return(
         <div>
@@ -387,30 +399,32 @@ function Home() {
                         <h2>Your Responses!</h2>
                         <div className={Styles.reviewbox}>
                             <h3>Guest Reviews</h3>
-                            <div className={Styles.reviewviewport}>
-                                {reviews.map((rev, idx) => (
-                                    <div key={idx} className={
-                                        idx === currentreview 
-                                        ? `${Styles.reviewitem} ${Styles.reviewitemactive}`
-                                        : `${Styles.reviewitem} ${Styles.reviewitemhidden}`
-                                    }>
-                                        <p className={Styles.reviewmessage}>"{rev.message}"</p>
-                                        <p className={Styles.reviewname}>- {rev.name}</p>
+                            <div className={Styles.reviewviewport} 
+                                onMouseEnter={() => setispaused(true)} 
+                                onMouseLeave={() => setispaused(false)}
+                            >
+                                {reviews.length > 0 ? (
+                                    <div>
+                                        <p>{reviews[currentreview].message}</p>
+                                        <h4>- {reviews[currentreview].name}</h4>
                                     </div>
-                                ))}
+                                ) : (
+                                    <p>No reviews yet. Be First to share your Experience!</p>
+                                )}
                             </div>
                         </div>
-                        <br />
-                        <p><b>Share Your Moments With Us</b></p>
-                        <br />
-                        <div>
-                            <Uploadwidget onupload={(url) => setUploadedImages((prev) => [...prev, url])} />
-                                {uploadedImages && (
-                                    <div style={{ marginTop: "10px" }}>
-                                        <p>Uploaded Images Preview:</p>
-                                        <img src={uploadedImages} alt="Uploaded" style={{ maxWidth: "100%", borderRadius: "8px" }} />
-                                    </div>
-                                )}
+                        <div className={Styles.uploadsection}>
+                            <h3>Share Your Moments With Us</h3>
+                            <br />
+                            <div className={Styles.uploadwidget}>
+                                <Uploadwidget onupload={(url) => setUploadedImages((prev) => [...prev, url])} />
+                                    {uploadedImages && (
+                                        <div style={{ marginTop: "10px" }}>
+                                            <p>Uploaded Images Preview:</p>
+                                            <img src={uploadedImages} alt="Uploaded" style={{ maxWidth: "100%", borderRadius: "8px" }} />
+                                        </div>
+                                    )}
+                            </div>
                         </div>
                     </div>
                 </div>
