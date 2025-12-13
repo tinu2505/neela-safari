@@ -408,9 +408,7 @@ function Home() {
                                         <p>{reviews[currentreview].message}</p>
                                         <h4>- {reviews[currentreview].name}</h4>
                                     </div>
-                                ) : (
-                                    <p>No reviews yet. Be First to share your Experience!</p>
-                                )}
+                                ) : (null)}
                             </div>
                         </div>
                         <div className={Styles.uploadsection}>
