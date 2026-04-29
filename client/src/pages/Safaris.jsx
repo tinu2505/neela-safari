@@ -5,7 +5,7 @@ import Styles from './safaris.module.css'
 
 const safaridetails = [
     {
-        img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
+        img: "https://g9xx1jeksl.ucarecd.net/e2ec5a5b-f74d-4d5d-a0be-fa9119584ece/logo4.png",
         title: "Morning Safari",
         content: "Experience the Beauty of Sunrise & Leopards in Hilly terrain of Jawai.",
         details : `Discover luxury safari experiences at Neela Safari.`,
@@ -21,7 +21,7 @@ const safaridetails = [
                 4. Mount Abu`
     },
     {
-        img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
+        img: "https://g9xx1jeksl.ucarecd.net/e2ec5a5b-f74d-4d5d-a0be-fa9119584ece/logo4.png",
         title: "Evening Safari"  ,
         content: "Experience the Beauty of Sunset & Leopards in Hilly terrain of Jawai.",
         details : `Discover luxury safari experiences at Neela Safari.`,
@@ -37,7 +37,7 @@ const safaridetails = [
                 4. Mount Abu`
     },
     {
-        img: "https://q0hao2iwgg.ucarecd.net/4a886a46-35a1-46da-a603-0ad9028202aa/logo4.png",
+        img: "https://g9xx1jeksl.ucarecd.net/e2ec5a5b-f74d-4d5d-a0be-fa9119584ece/logo4.png",
         title: "Full Day Safari",
         content: "Experience the Beauty of Sunrise & Sunset & Leopards in Hilly terrain of Jawai.",
         details : `Discover luxury safari experiences at Neela Safari.`,

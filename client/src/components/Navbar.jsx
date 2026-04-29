@@ -8,7 +8,7 @@ function Navbar() {
 
   return (
     <nav className={styles.nav}>
-      <Link to="/"><img src="https://q0hao2iwgg.ucarecd.net/c80f86d4-5081-4d49-98f6-69311953993e/neelasafari.png" alt="logo" /></Link>
+      <Link to="/"><img src="https://g9xx1jeksl.ucarecd.net/b0d84ab9-31ee-45eb-81a5-525c8f5bc184/neelasafari.png" alt="logo" /></Link>
       <button onClick={() => setOpen(!open)} className={styles.hamburger}>
         &#9776;
       </button>

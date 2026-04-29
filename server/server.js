@@ -54,7 +54,7 @@ app.post('/api/form', async (req, res) => {
 
 app.get('/api/form', async (req, res) => {
   try {
-      const entries = await FormEntry.find();
+      const entries = await FormEntry.find().sort({ createdAt: -1});
       res.json(entries);
     } 
     catch (err) {
