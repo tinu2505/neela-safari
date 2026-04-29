@@ -12,7 +12,7 @@ const safaridetails = [
         timing: `5AM to 8AM`,
         individuals: `Max 5 Individuals per Gypsy`,
         includes: `Includes High Tea`,
-        price: `7000 INR`,
+        price: `4500 INR`,
         pickup: `Pickup from Following Locations are Available: `,
         pickuplocations: `
                 1. Jodhpur
@@ -28,7 +28,7 @@ const safaridetails = [
         timing: `4PM to 7PM`,
         individuals: `Max 5 Individuals per Gypsy`,
         includes: `Includes High Tea`,
-        price: `7000 INR`,
+        price: `4500 INR`,
         pickup: `Pickup from Following Locations are Available: `,
         pickuplocations: `
                 1. Jodhpur
@@ -44,7 +44,7 @@ const safaridetails = [
         timing: `5AM to 8PM`,
         individuals: `Max 5 Individuals per Gypsy`,
         includes: `Includes High Tea and Lunch`,
-        price: `25000 INR`,
+        price: `22000 INR`,
         pickup: `Pickup from Following Locations are Available: `,
         pickuplocations: `
                 1. Jodhpur
